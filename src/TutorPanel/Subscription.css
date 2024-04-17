@@ -1,0 +1,155 @@
+.bg-body-tertiary {
+    background-color: #f5efef;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 20px 130px 20px 280px !important;
+
+}
+button#dropdown-basic {
+    background: transparent;
+    color: black;
+    border: none;
+}
+
+
+.subscrip {
+    font-weight: 700;
+}
+.dropdown-toggle::after {
+   
+    font-size: 0px !important;
+}
+.tst{
+    font-size: 20px;
+    background-color: #1177FE;
+    font-weight: 700;
+    padding: 4px 6px 4px 6px;
+    border-radius:100px;
+    margin: 0px 10px 0px 10px;
+    color: white;
+
+  
+}
+.share1 {
+    font-size: 35px;
+    border-radius: 50px;
+    padding: 4px;
+    background-color: rgba(17, 119, 254, 1);
+    color: white;
+    margin: -10px 10px 0px 10px;
+
+}
+
+.share2 {
+    font-size: 40px;
+    border-radius: 50px;
+    padding: 4px ;
+    background-color: rgba(17, 120, 254, 0);
+    color: rgba(17, 119, 254, 1);
+    margin: 0px 10px  0px 10px;
+}
+.dropdown-menu.show {
+    display: block;
+    padding: 20px 0px 20px 0px;
+    margin-left: -100px;
+    border: 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.share3{
+    font-size: 40px;
+    
+    padding: 4px ;
+    background-color: rgba(17, 120, 254, 0);
+    color: rgba(17, 119, 254, 1);  
+}
+.content2{
+    padding: 70px 0px 20px 0px;
+}
+.p098{
+    font-size: 18px;
+}
+
+
+.sidebar {
+    /* height: 100vh; */
+    background: linear-gradient(169.33deg, #1177FE 33.35%, #0A4798 110.25%);
+    color: rgb(255, 255, 255);
+    padding: 20px 0px 30px 0px;
+}
+.dashboard-header {
+margin-top: 20px;
+margin-bottom: 20px;
+}
+.nav-link {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: #ffffff;
+    padding: 10px 20px 10px 20px;
+
+}
+.nav-link:hover {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: #ffffff;
+    background-color: #0A4798;
+    padding: 10px 20px 10px 20px;
+    
+}
+.bg-body-tertiaryb{
+    background-color: #f5efef;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 20px 0px 20px 0px !important;
+
+    margin: 0px -10px 0px -12px !important;
+
+}
+.tutorl0go{
+    font-size: 20px;
+    font-weight: 600;
+}
+.dashboard-cards {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 20px;
+}
+
+.dashboard-card {
+background: #fff;
+border: 1px solid #ddd;
+padding: 20px;
+box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.table-dashboard {
+width: 100%;
+margin-top: 20px;
+border-collapse: collapse;
+}
+
+.table-dashboard th, .table-dashboard td {
+border: 1px solid #ddd;
+padding: 8px;
+text-align: left;
+}
+
+.table-dashboard th {
+background-color: #f8f9fa;
+}
+
+.logoimgy{
+    width: 40px;
+    margin: 0px 13px 0px 0px;
+}
+.TutorOctopus{
+    font-size: 18px;
+    margin-left: -15px;
+}
+
+.logoimgy1{
+    width: 40px;
+    margin: 0px 13px 0px 0px;
+}
+

@@ -1,0 +1,202 @@
+.mbsc-ios .mbsc-form-grid .mbsc-textfield-wrapper {
+    margin: 0.75em 1em;
+}
+
+.react-international-phone-input-container .react-international-phone-input {
+
+
+    width: 100%;
+    border-radius: 0px 30px 30px 0px !important;
+
+}
+
+.react-international-phone-input-container .react-international-phone-country-selector-button {
+    border-radius: 30px 0px 0px 30px !important;
+}
+
+.addbtn {
+    background-color: transparent;
+    color: #1177FE;
+    border: none;
+}
+
+.grou1 {
+    background: rgba(24, 121, 11, 0.377);
+color:   rgba(24, 121, 11, 0.901);;
+    padding: 0px 7px 0px 7px;
+    border-radius: 30px;
+    margin: 0px 0px 0px 29px;
+}
+.grnext{
+    border-radius: 30px !important;
+}
+.grnext1{
+    border-radius: 30px !important;
+    background-color: transparent;
+    border: 1px solid black !important;
+    color: black;
+    margin: 20px;
+}
+.grnext1:hover{
+    border-radius: 30px !important;
+    background-color: #1177FE;
+    border: 1px solid #1177FE !important;
+    color: rgb(255, 255, 255);
+}
+
+.grou2 {
+    background: rgba(24, 121, 11, 0.377);
+    color:rgba(24, 121, 11, 0.989);;
+
+    padding: 0px 7px 0px 7px;
+    border-radius: 30px;
+    margin: 0px 0px 0px 40px;
+}
+
+.grou3 {
+    background: rgba(227, 76, 0, 0.262);
+color:  rgb(227, 76, 0);
+    padding: 0px 7px 0px 7px;
+    border-radius: 30px;
+    margin: 0px 0px 0px 40px;
+}
+
+.grou4 {
+    background: rgba(121, 66, 117, 0.282);
+
+    padding: 0px 7px 0px 7px;
+    border-radius: 30px;
+    margin: 0px 0px 0px 40px;
+    color:rgba(121, 66, 116, 1);
+    ;
+}
+
+.grou5 {
+    background: rgba(52, 66, 66, 0.193);
+color:  rgba(52, 66, 66, 1);
+;
+
+    padding: 0px 7px 0px 7px;
+    border-radius: 30px;
+    margin: 0px 0px 0px 40px;
+}
+
+.form-check-input[type=radio] {
+    border-radius: 50%;
+    margin-left: -35px;
+}
+.mbsc-button-group-block{
+    float: right;
+}
+.formjhu{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding: 40px 40px 150px 40px;
+    margin: 20px 160px 90px 160px;
+    border-radius: 30px;
+    background-color: white;
+}
+.content7{
+    margin: 20px 0px 20px 170px;
+}
+.backgroundy{
+    background-color: #F5EFEF
+    ;
+    margin-top: -50px !important;
+    padding: 80px 0px 90px 0px ;
+
+}
+
+.grnext4{
+    border-radius: 30px !important;
+    padding: 4px 20px 4px 20px;
+    margin: 10px;
+    background-color: #95C1FC;
+    border: none;
+    color: black;
+}
+.morelect{
+    background-color: transparent;
+    border: none;
+    color: black;
+    margin: 0px 0px 0px 10px;
+
+}
+ul.ulio {
+    margin-left: 50px;
+}
+
+.nhhhjnxch.dropdown-menu.show {
+    margin-left: 0px;
+    margin-top: 3px;
+}
+
+
+button#dropdown-basic.grnext47{
+    border-radius: 30px !important;
+    padding: 4px 20px 4px 20px;
+    margin: 10px;
+    background-color: #95C1FC !important;
+    border: none;
+    color: black;
+}
+#more {display: none;}
+.grnext11{
+    border-radius: 30px !important;
+    background-color: transparent;
+    border: 1px solid black !important;
+    color: black;
+    padding: 4px 20px 4px 20px;
+    margin: 10px;
+}
+.grnext11:hover{
+    border-radius: 30px !important;
+    background-color: #1177FE;
+    border: 1px solid #1177FE !important;
+    color: rgb(255, 255, 255);
+}
+.mbsc-col-12.mbsc-col-md-6.mbsc-col-lg-3.chectradisbbtn {
+    display: flex;
+}
+@media (max-width: 480px) {
+    .formjhu{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        padding: 40px 40px 150px 40px;
+        margin: 20px 10px 90px 10px !important;
+        border-radius: 30px;
+        background-color: white;
+    }
+    .content7 {
+        margin: 20px 0px 20px 20px !important;
+    }
+    .grou1 {
+        background: rgba(24, 121, 11, 0.377);
+        color: rgba(24, 121, 11, 0.901);
+        padding: 0px 7px 0px 7px;
+        border-radius: 30px;
+        margin: 0px 0px 10px 40px !important;
+    }
+    .grou3 {
+      
+        margin: 0px 0px 10px 40px !important;
+    }
+    .nbhgdyfsf.col-sm-3 {
+        width: 100%;
+    }
+    .mbsc-col-12.mbsc-col-md-6.mbsc-col-lg-3.chectradisbbtn{
+        display: grid!important;
+    }
+    
+    
+}
+@media (max-width: 768px) {
+    .formjhu{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        padding: 40px 40px 150px 40px;
+        margin: 20px 10px 90px 10px !important;
+        border-radius: 30px;
+        background-color: white;
+    }
+    .content7 {
+        margin: 20px 0px 20px 20px !important;
+    }
+}

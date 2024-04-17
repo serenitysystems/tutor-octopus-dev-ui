@@ -1,0 +1,117 @@
+.addnewcard89 {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    margin: 30px 0px 0px 0px;
+    padding: 0px 10px 10px 100px;
+    margin: 0px 100px 0px 100px;
+    border: none;
+    border-radius: 20px;
+}
+
+
+
+.menu7h {
+
+
+    width: 100%;
+    display: grid;
+    /* Define Auto Row size */
+
+    /*Define our columns */
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    
+}
+
+.artcal5 {
+
+    padding: 0px;
+    color: #000000;
+}
+
+.Quiz4 {
+   width: 100%;
+   
+}
+
+
+
+
+
+@media (max-width: 480px) {
+    .addnewcard89 {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+        margin: 30px 0px 0px 0px;
+        padding: 0px 10px 10px 20px !important;
+        margin: 0px 0px 0px 0px !important ;
+        border: none;
+        border-radius: 20px;
+    }
+    .Quiz4 {
+        margin-top: 0px !important;
+        width: 50% !important;
+       
+    }
+    .addnewcard89.card {
+        margin: 140px 10px 0px 10px !important;
+    }
+    
+    
+.menu7h {
+
+
+    width: 100%;
+    display: grid !important;
+    /* Define Auto Row size */
+
+    /*Define our columns */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+    
+}
+
+    
+}
+
+
+
+
+@media (max-width: 768px) {
+    .addnewcard89.card {
+        margin: 140px 10px 0px 10px !important;
+    }
+    .addnewcard89 {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+        margin: 0px 0px 0px 0px !important;
+        padding: 0px 10px 10px 20px !important;
+        margin: 0px 0px 0px 0px !important ;
+        border: none;
+        border-radius: 20px;
+    }
+    .Quiz4 {
+        margin-top: 0px !important;
+        width: 100% ;
+       
+    }
+    
+.menu7h {
+
+
+    width: 100%;
+    display: grid !important;
+    /* Define Auto Row size */
+
+    /*Define our columns */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+    
+}
+
+
+    
+}
+
+
+@media screen and (max-width: 1080px){
+    .navbar-collapse {
+        z-index: 10;
+        background-color: #ffffff00 !important;
+    
+    
+    }}

@@ -1,0 +1,386 @@
+.circle#SvgjsCircle1093 {
+    font-size: 20px !important;
+}
+
+g#SvgjsG1057 {
+    background: #F56954!important;
+    font-size: 50px !important;
+}
+
+path#SvgjsPath1056 {
+   fill: #F56954;
+}
+path#SvgjsPath1069{
+    fill: 
+    #5CB9B1;
+} 
+.piechart{
+    margin-top: -40px;
+}
+/* text#SvgjsText1058  {
+    fill: blue;
+    background-color: red;
+    background-clip: border-box;
+} */
+.apexcharts-legend-series ,
+.apexcharts-legend.apexcharts-align-center.apx-legend-position-right
+{
+   display: none;
+  
+}
+
+
+
+.arty789 {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+
+    width: 100%;
+    display: grid;
+    /* Define Auto Row size */
+    grid-auto-rows: 100px;
+    /*Define our columns1 */
+    grid-template-columns1: repeat(auto-fill, minmax(500px, 1fr));
+    grid-gap: 1em;
+}
+
+.arty78 {
+    border-radius: 10px;
+    padding: 20px;
+
+    color: #fff;
+}
+
+.arty78:nth-child(odd) {
+    background-color: #5CB9B1;
+    padding: 40px 40px 40px 40px;
+    height: 150px;
+}
+
+.arty78:nth-child(even) {
+    background-color: #E08CFB;
+    padding: 40px 40px 40px 40px;
+    height: 150px;
+}
+
+.box2098 {
+    box-shadow: rgba(0, 0, 0, 0.137) 0px 5px 15px;
+    background-color: #F9F9F9;
+    padding: 50px 40px 50px 40px;
+    border-radius: 20px;
+    height: 190px;
+}
+
+.box2099 {
+    box-shadow: rgba(0, 0, 0, 0.137) 0px 5px 15px;
+    background-color: #B6E3FF;
+    padding: 50px 40px 50px 40px;
+    border-radius: 20px;
+    height: 190px;
+}
+
+.box20999 {
+    box-shadow: rgba(0, 0, 0, 0.137) 0px 5px 15px;
+    background-color: #FEC39C;
+    padding: 50px 40px 50px 40px;
+    border-radius: 20px;
+    height: 190px;
+}
+
+.addnewcard899 {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    margin: 0px 80px 0px 80px !important;
+    padding: 0px 50px 10px 50px !important;
+
+    border: none;
+    border-radius: 20px;
+}
+
+.type2 {
+
+    font-size: 45px;
+}
+
+.type3 {
+    font-size: 20px;
+}
+
+.imgpy {
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.examfinal {
+    width: 100px;
+    margin-top: -20px;
+}
+
+.examfinal1 {
+    font-size: 25px;
+    color: black;
+
+}
+
+
+.wrapper34 {
+    padding: 5px;
+    max-width: 960px;
+    width: 95%;
+    margin: 0px auto;
+}
+
+.columns1 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 5px 0;
+}
+
+.carduploadresult{
+
+    background-color: #6A89B2;
+    height: 203px;
+   border-radius: 20px;
+
+}
+
+.carduploadresult2{
+    box-shadow: rgba(0, 0, 0, 0.137) 0px 5px 15px;
+    background-color: #F9F9F9;
+    padding: 60px 40px 80px 40px;
+    border-radius: 20px;
+    height:260px; 
+    border: none;
+}
+
+
+
+.column1 {
+    flex: 1;
+    border: 1px solid rgba(128, 128, 128, 0);
+    margin: 2px;
+    padding: 10px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+}
+
+
+
+
+@media screen and (max-width: 980px) {
+    .columns1 .column1 {
+        margin-bottom: 5px;
+        flex-basis: 40%;
+
+        &:nth-last-child(2) {
+            margin-right: 0;
+        }
+
+        &:last-child {
+            flex-basis: 100%;
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .columns1 .column1 {
+        flex-basis: 100%;
+        margin: 0 0 5px 0;
+    }
+}
+
+
+
+.wrapper2 {
+    padding: 5px;
+    max-width: 960px;
+    width: 95%;
+    margin: 0px auto;
+}
+
+.columns2 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 0px 0;
+}
+
+.column2 {
+    flex: 1;
+    border: 1px solid rgba(128, 128, 128, 0);
+    margin: 2px;
+    padding: 10px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+}
+
+
+
+@media screen and (max-width: 980px) {
+    .columns2 .column2 {
+        margin-bottom: 5px;
+        flex-basis: 40%;
+
+        &:nth-last-child(2) {
+            margin-right: 0;
+        }
+
+        &:last-child {
+            flex-basis: 100%;
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .columns2 .column2 {
+        flex-basis: 100%;
+        margin: 0 0 5px 0;
+    }
+}
+
+
+.box20888{
+    box-shadow: rgba(0, 0, 0, 0.137) 0px 5px 15px;
+    background-color: #5CB9B1;
+    padding: 70px 40px 50px 40px;
+    border-radius: 20px;
+    height: 270px;
+}
+
+.box208888{
+    box-shadow: rgba(0, 0, 0, 0.137) 0px 5px 15px;
+    background-color: #E08CFB;
+    padding: 70px 40px 50px 40px;
+    border-radius: 20px;
+    height: 270px;
+}
+
+.siund4{
+width: 30%;
+margin-left: auto;
+margin-right: auto;
+display: block;
+margin-top: -50px;
+}
+
+.box20982 {
+    box-shadow: rgba(0, 0, 0, 0.137) 0px 5px 15px;
+    background-color: #F9F9F9;
+    padding: 60px 40px 80px 40px;
+    border-radius: 20px;
+    height:500px;
+}
+.box209823{
+   
+   
+    
+    height:360px; 
+}
+canvas {
+    height: 160px !important;
+    
+}
+.bnnnui{
+    margin: 20px 0px 0px 30px ;
+}
+.bnnnuib{
+ 
+        margin: 10px 0px 0px 100px ;
+}
+
+@media (max-width: 480px) {
+    .addnewcard899 {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+        margin: 0px 0px 0px 0px !important;
+        padding: 0px 0px 10px 0px !important;
+        border: none;
+        border-radius: 20px;
+    }
+    .examfinal1 {
+        font-size: 25px;
+        color: black;
+        text-align: center;
+    }
+    .examfinal {
+        width: 100px;
+        margin-top: -20px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    .bnnnui {
+        margin: 0px 50px 0px 30px !important;
+    }
+    
+    
+
+.bnnnuib {
+    margin: 10px 40px 0px 40px;
+}
+    .box20982 {
+        box-shadow: rgba(0, 0, 0, 0.137) 0px 5px 15px;
+        background-color: #F9F9F9;
+        padding: 0px 0px 10px 0px !important;
+        border-radius: 20px;
+        height: 400px;
+        margin: 30px 0px 0px 0px !important;
+    }
+    .addstutnet1 {
+        padding: 40px 0px 140px 0px !important;
+    }
+.wrapper34 {
+    
+    width: 95% !important;
+
+}
+}
+
+
+@media (max-width: 768px) {
+ 
+    .box20888,.box208888 {
+       
+        height: 300px;
+    }
+    .examfinal1 {
+        font-size: 25px;
+        color: black;
+        text-align: center;
+    }
+    .examfinal {
+        width: 100px;
+        margin-top: -20px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    .addnewcard899 {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+        margin: 0px 0px 0px 0px !important;
+        padding: 0px 0px 10px 0px !important;
+        border: none;
+        border-radius: 20px;
+    }
+    .addstutnet1 {
+        padding: 40px 0px 140px 0px !important;
+    } 
+}
