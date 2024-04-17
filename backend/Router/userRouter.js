@@ -156,7 +156,7 @@ const transporter = nodemailer.createTransport({
     const mailOptions = {
       from: 'pankajsoni93444@gmail.com',
       to: email,
-      subject: 'Your OTP',
+      subject: 'Your OTP FOR PASSWORD CORRECTION',
       text: `Your OTP is: ${otp}` // Replace with the actual OTP
     };
   
@@ -167,7 +167,7 @@ const transporter = nodemailer.createTransport({
       } 
       else {
         console.log('Email sent:', info.response);
-        return res.send({ success: true, message: 'OTP sent successfully' });
+        return res.send({ success: true, message: 'OTP sent successfully',data:otp });
       }
     });
   });

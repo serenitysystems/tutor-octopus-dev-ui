@@ -279,7 +279,7 @@ const Landing = () => {
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe id="iframe" class="embed-responsive-item" src="https://www.youtube.com/embed/Kch8n4tcOZQ" allowfullscreen></iframe>
+                                        <iframe id="iframe" class="embed-responsive-item" src="https://www.youtube.com/embed/Kch8n4tcOZQ?autoplay=1&mute=1" allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div>

@@ -18,6 +18,9 @@ const Sidenavbar = () => {
         // Handle logout here
         setShowModalLogout(false);
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('userId');
+        sessionStorage.removeItem('firstName');
+        sessionStorage.removeItem('lastName');
         navigate('/Login')
     
       };

@@ -28,6 +28,7 @@ const Attendencelist = () => {
     const [Present, setPresent] = useState(0);
     const [Absent, setAbsent] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
+    const today2 = new Date();
     const [studentsPerPage] = useState(5); // Number of students to display per page
     const [AttendenceRecord, setAttendenceRecord] = useState({
         date: [],
@@ -36,7 +37,7 @@ const Attendencelist = () => {
         falseCount: 0
     });
 
-    const [calenderDate, setcalenderDate] = useState('');
+    const [calenderDate, setcalenderDate] = useState(today2);
     const [calenderRecordDate, setcalenderRecordDate] = useState('');
 
 

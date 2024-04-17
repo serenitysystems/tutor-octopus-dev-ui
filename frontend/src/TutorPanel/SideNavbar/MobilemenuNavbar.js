@@ -7,6 +7,8 @@ import { Modal, Button } from 'react-bootstrap';
 const MobilemenuNavbar = ({userData}) => {
     const navigate = useNavigate();
     const location=useLocation();
+
+    let profilename=sessionStorage.getItem('firstName').charAt(0);
     
   const [showModalLogout, setShowModalLogout] = useState(false);
     const handleLogout = () => {
@@ -31,7 +33,7 @@ const MobilemenuNavbar = ({userData}) => {
                     <a className="navbar-brand" >{location.pathname.substring(1)}</a>
 
                     <CiShare2 className='share1' /> <IoIosNotificationsOutline className='share1' />
-                    <Link to='/Profile'><span className='tst'>{userData.firstName[0]}</span></Link>
+                    <Link to='/Profile'><span className='tst'>{profilename}</span></Link>
 
 
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

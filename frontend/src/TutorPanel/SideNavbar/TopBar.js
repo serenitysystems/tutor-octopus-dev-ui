@@ -9,6 +9,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const TopBar = ({userData}) => {
 
+  // console.log(sessionStorage.getItem('firstName').charAt[0])
+  // console.log(sessionStorage.getItem('lastName')).charAt(0);
+
+
+  let profilename=sessionStorage.getItem('firstName').charAt(0)+sessionStorage.getItem('lastName').charAt(0);
+
 
 
   //PANKAJ--->PAN---(0,3)
@@ -43,7 +49,8 @@ const TopBar = ({userData}) => {
             <Navbar.Text>
               <CiShare2 className='share1' /> <IoIosNotificationsOutline className='share1' />
 
-              <Link to='/Profile'><span className='tst'>{userData.firstName[0]+userData.lastName[0]}</span></Link>
+              {/* <Link to='/Profile'><span className='tst'>{userData.firstName[0]+userData.lastName[0]}</span></Link> */}
+              <Link to='/Profile'><span className='tst'>{profilename}</span></Link>
             </Navbar.Text>
 
             <Link to='/Subscription' className='Subscribe'>Subscribe </Link>

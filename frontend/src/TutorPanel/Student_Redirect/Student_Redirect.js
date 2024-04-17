@@ -10,6 +10,8 @@ import Sidenavbar from '../SideNavbar/Sidenavbar'
 import TopBar from '../SideNavbar/TopBar'
 const Student_Redirect = ({userData}) => {
     
+    let profilename=sessionStorage.getItem('firstName')+" "+sessionStorage.getItem('lastName');
+    let profileimg=sessionStorage.getItem('firstName').charAt(0)+sessionStorage.getItem('lastName').charAt(0);
 
 
     return (
@@ -31,8 +33,8 @@ const Student_Redirect = ({userData}) => {
 
                                 <div className="wrapperb wrap89">
                                     <div className="card4cardf">
-                                        <h3 className="card-title4 text-center">{userData.firstName[0]+userData.lastName[0]}</h3>
-                                        <h4 className='text-center'>{userData.firstName+" "+userData.lastName}</h4>
+                                        <h3 className="card-title4 text-center">{profileimg}</h3>
+                                        <h4 className='text-center'>{profilename}</h4>
                                         <p className="card-content4 text-center">{userData.user}</p>
 
                                        <Link to='/Login'> <Button  className='logoutbutton'>Log out of all devices</Button></Link>

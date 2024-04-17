@@ -99,6 +99,20 @@ export const updateStudentRouter=async(data)=>{
 }
 
 
+export const OtpUser=async (email)=>{
+     //console.log(user)
+     try{
+          const response=await axios.post(`${baseurl}/user/forgetPassword/sendOTP`,email);
+          return response.data;
+     }
+     catch(error)
+     {
+          return error.response.data;
+     }
+  
+  };
+
+
 
 
 

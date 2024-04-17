@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {useNavigate} from 'react-router-dom';
+import { OtpUser } from '../../apicalls/User'
+import { toast } from 'react-toastify'
 
 const ForgetPassword = () => {
 
@@ -20,6 +22,51 @@ const ForgetPassword = () => {
       },
     })
   }
+
+  const handleChange=(event)=>{
+    setInputValue(event.target.value);
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // console.log(data)
+    // setloading(true);
+    // console.log(loading)
+
+    const response = await OtpUser({email:inputValue});
+
+    if (response) {
+        console.log(response.message)
+        // setloading(false)
+        if (response.success === false) {
+            //  alert(response.message)
+            toast.info(response.message);
+        }
+        else if(response.success===true ) {
+            // toast.success(response.message+" "+response.data.role);
+            // navigate('/TutorHome',{state:response.data})
+            // sessionStorage.setItem('token', response.data.token);
+            // sessionStorage.setItem('userId',response.data.id);
+            // sessionStorage.setItem('firstName',response.data.firstName);
+            // sessionStorage.setItem('lastName',response.data.lastName);
+            // onLogin(response.data);
+            // navigate('/Home')
+            sessionStorage.setItem('otp',response.data)
+
+            // alert(response.message)
+        }
+        // else{
+        //     // toast.success(response.message+" "+response.data.role);
+        //     // navigate('/TutorHome',{state:response.data})
+        //     sessionStorage.setItem('token', response.data.token);
+        //     // onLogin(response.data);
+        //     navigate('/BusinessTutor')
+
+        // }
+    }
+
+     
+}
   return (
 
     <div>
@@ -35,20 +82,26 @@ const ForgetPassword = () => {
           <div class="container">
 
             <div class="row mt-5 mt-md-4 row-cols-1 row-cols-sm-1 row-cols-md-3 justify-content-center">
-              <div class="col">
+              <div className="col">
 
               </div>
-              <div class="col bkoo">
+              <div className="col bkoo">
                 <div class="service-card2">
                   <Card className='card576'>
                     <h1 className='Signup2'>Forget Password</h1>
 
-                    <Form className='form9180'  >
+                    <Form onSubmit={handleSubmit} className='form9180'  >
 
                       <Form.Group className="mb-4" controlId="formBasicEmail">
                         <FormLabel>Email</FormLabel>
-                        <Form.Control className=" FormControl3" type="email"
-                          name="email" placeholder='Enter Your Email' required
+                        <Form.Control 
+                        onChange={handleChange}
+                        value={inputValue}
+                        className=" FormControl3" 
+                          type="email"
+                          name="email" 
+                          placeholder='Enter Your Email' 
+                          required
 
 
                         />
@@ -57,7 +110,7 @@ const ForgetPassword = () => {
 
 
 
-                      <Button onClick={()=>navigate('/OTP')}  className='VOIR_LESPRODUITSbn9 ' type="submit" >Submit</Button>
+                      <Button   className='VOIR_LESPRODUITSbn9 ' type="submit" >Submit</Button>
 
                     </Form>
                     {/* {
