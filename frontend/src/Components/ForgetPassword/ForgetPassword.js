@@ -43,14 +43,14 @@ const ForgetPassword = () => {
             toast.info(response.message);
         }
         else if(response.success===true ) {
-            // toast.success(response.message+" "+response.data.role);
+            toast.success(response.message);
             // navigate('/TutorHome',{state:response.data})
             // sessionStorage.setItem('token', response.data.token);
             // sessionStorage.setItem('userId',response.data.id);
             // sessionStorage.setItem('firstName',response.data.firstName);
             // sessionStorage.setItem('lastName',response.data.lastName);
             // onLogin(response.data);
-            // navigate('/Home')
+             navigate('/OTP')
             sessionStorage.setItem('otp',response.data)
 
             // alert(response.message)

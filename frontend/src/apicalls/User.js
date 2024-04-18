@@ -113,6 +113,20 @@ export const OtpUser=async (email)=>{
   };
 
 
+export const ChangePassword=async (data)=>{
+     //console.log(user)
+     try{
+          const response=await axios.put(`${baseurl}/passwordChange`,data);
+          return response.data;
+     }
+     catch(error)
+     {
+          return error.response.data;
+     }
+  
+  };
+
+
 
 
 
