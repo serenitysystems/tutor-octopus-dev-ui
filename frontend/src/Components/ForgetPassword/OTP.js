@@ -16,7 +16,8 @@ const OTP = () => {
       sessionStorage.setItem('otp',"verified");
     }
     else{
-      toast.error('Invalid password');
+      toast.error('Invalid otp');
+      
     }
   };
 

@@ -21,13 +21,12 @@ import MobilemenuNavbar from './SideNavbar/MobilemenuNavbar';
 const Home = ({userData}) => {
 
   const navigate=useNavigate();
+  
+  
+  
   useEffect(()=>{
     if(!sessionStorage.getItem('token')){
-      //alert('YOU ARE NOT LOGGED IN! KINDLY LOGIN! CLICK OK BUTTON 2 TIMES');
-      //console.log("check")
       navigate('/Login')
-      //console.log("check")
-      
     }
 
   },[])
@@ -80,15 +79,15 @@ const Home = ({userData}) => {
 
   return (
     <div>
-      <MobilemenuNavbar userData={userData}/>
+      {sessionStorage.getItem('token') && <MobilemenuNavbar userData={userData}/>}
       <div className="container-fluid">
         <div className="row">
           <nav className="col-md-2 d-none d-md-block bg-light sidebar">
-            <Sidenavbar/>
+          {sessionStorage.getItem('token') && <Sidenavbar/>}  
           </nav>
 
           <main role="main" className="col-md-9 col-lg-10 ">
-           <TopBar userData={userData}/>
+          {sessionStorage.getItem('token') &&<TopBar userData={userData}/>}
 
             <div className="dashboard-header px-md-4">
               <h4 className="">Lets get Started BUDDY, {userData.firstName}</h4>

@@ -6,6 +6,7 @@ import Footer from '../Footer'
 import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LoginUser } from '../apicalls/User';
+import { FaEye, FaEyeSlash } from 'react-icons/fa6'
 
 const Login = ({ onLogin }) => {
 
@@ -69,6 +70,13 @@ const Login = ({ onLogin }) => {
     }
 
 
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     
     useEffect(()=>{
         sessionStorage.removeItem('token')
@@ -106,24 +114,36 @@ const Login = ({ onLogin }) => {
 
                                                 <Form.Group className="mb-4" controlId="formBasicEmail">
 
-                                                    <Form.Control className=" FormControl3" type="email" name="email" placeholder='Email' required
-                                                        onChange={handleChange}
+                                                    <Form.Control
+                                                     className=" FormControl3" 
+                                                     type="email" name="email" 
+                                                     placeholder='Email' 
+                                                     required
+                                                    onChange={handleChange}
+                                                    value={data.email}
 
                                                     />
 
                                                 </Form.Group>
 
-                                                <Form.Group className="mb-4" controlId="formBasicEmail">
-
-                                                    <Form.Control className="no-outline FormControl3" type="password" placeholder='Password'
-                                                        onChange={handleChange}
-                                                        name="password"
-                                                        required />
-                                                    {/* <Button onClick={()=>setModal(true)} className='ForgetPassword'>Forget Password ?</Button> */}
-                                                    <Link to='/ForgetPassword'  className='ForgetPassword'>Forget Password ?</Link>
-
-
-                                                </Form.Group>
+                                                <div className="eyese">
+                                                            <Form.Control className=" FormControl3 meyese "
+                                                                type={showPassword ? 'text' : 'password'} name="password"
+                                                                placeholder='password'
+                                                                value={data.password}
+                                                                onChange={handleChange}
+                                                                required
+                                                            />
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-link" style={{ color: "black" }}
+                                                                onClick={togglePasswordVisibility}
+                                                            >
+                                                                {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Eye icons */}
+                                                            </button>
+                                                           
+                                                </div>
+                                                <Link to='/ForgetPassword'  className='ForgetPassword'>Forget Password ?</Link>
 
                                                 <Button  className='VOIR_LESPRODUITSbn9 ' type="submit">Sign in</Button>
 

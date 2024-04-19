@@ -134,13 +134,17 @@ const Signup = () => {
             errors.email = "This is not a valid email format!";
         }
 
-
+        const passwordStrengthRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,10}$/;
         if (!values.password) {
             errors.password = "Password is required**";
         } else if (values.password.length < 6) {
             errors.password = "**Password must be more than 4 characters**";
         } else if (values.password.length > 10) {
             errors.password = "**Password cannot exceed more than 10 characters**";
+        }
+        
+       else if (!passwordStrengthRegex.test(values.password)) {
+            errors.password = "**Password must contain at least one uppercase letter, one lowercase letter, one number, one special character**";
         }
 
         if (!values.businessName) {

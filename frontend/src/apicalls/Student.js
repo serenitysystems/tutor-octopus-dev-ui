@@ -1,12 +1,22 @@
 import  axios from "axios";
 import baseurl from ".";
+import { toast } from "react-toastify";
 
 export const AddNewStudentRouter=async (studentData)=>{
     console.log("AddNewStudentRouter")
     console.log(studentData);
+    const token = sessionStorage.getItem('token');
   try{
-       const response=await axios.post(`${baseurl}/student/add`,studentData);
-       console.log(response);
+     const response = await axios.post(`${baseurl}/student/add`, studentData, {
+          headers: {
+               authorization: token
+          }
+        });
+        if(response.status===403)
+        {
+          toast("User not authorized")
+        }
+      // console.log(response);
        return response.data;
   }
   catch(error)

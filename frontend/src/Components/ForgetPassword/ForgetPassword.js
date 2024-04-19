@@ -6,11 +6,14 @@ import withReactContent from 'sweetalert2-react-content'
 import {useNavigate} from 'react-router-dom';
 import { OtpUser } from '../../apicalls/User'
 import { toast } from 'react-toastify'
+import Lazyloading from '../../BackendComp/Lazy'
+
 
 const ForgetPassword = () => {
 
   const [inputValue, setInputValue] = useState('');
   const navigate=useNavigate();
+  const [loading,setloading]=useState(false);
 
   const showSwal = () => {
     withReactContent(Swal).fire({
@@ -30,14 +33,14 @@ const ForgetPassword = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // console.log(data)
-    // setloading(true);
+    setloading(true);
     // console.log(loading)
-
+   
     const response = await OtpUser({email:inputValue});
 
     if (response) {
         console.log(response.message)
-        // setloading(false)
+        setloading(false)
         if (response.success === false) {
             //  alert(response.message)
             toast.info(response.message);
@@ -90,17 +93,21 @@ const ForgetPassword = () => {
                   <Card className='card576'>
                     <h1 className='Signup2'>Forget Password</h1>
 
-                    <Form onSubmit={handleSubmit} className='form9180'  >
+                    {
+                      loading===true?(
+                        <Lazyloading/>
+                      ):(
+                        <Form onSubmit={handleSubmit} className='form9180'  >
 
                       <Form.Group className="mb-4" controlId="formBasicEmail">
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>Email </FormLabel>
                         <Form.Control 
                         onChange={handleChange}
                         value={inputValue}
                         className=" FormControl3" 
                           type="email"
                           name="email" 
-                          placeholder='Enter Your Email' 
+                          placeholder='Enter Your Gmail to recieve otp' 
                           required
 
 
@@ -113,6 +120,8 @@ const ForgetPassword = () => {
                       <Button   className='VOIR_LESPRODUITSbn9 ' type="submit" >Submit</Button>
 
                     </Form>
+                      )
+                    }
                     {/* {
                                             loading===true &&
                                             <p>loading...</p>

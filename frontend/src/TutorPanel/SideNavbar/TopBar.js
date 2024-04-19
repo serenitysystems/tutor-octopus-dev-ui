@@ -19,16 +19,16 @@ const TopBar = ({userData}) => {
 
   //PANKAJ--->PAN---(0,3)
   const navigate=useNavigate();
-  useEffect(()=>{
-    if(!sessionStorage.getItem('token')){
-      alert('YOU ARE NOT LOGGED IN! KINDLY LOGIN! CLICK OK BUTTON 2 TIMES');
-      console.log("check")
-      navigate('/Login')
-      console.log("check")
+  // useEffect(()=>{
+  //   if(!sessionStorage.getItem('token')){
+  //     alert('YOU ARE NOT LOGGED IN! KINDLY LOGIN! CLICK OK BUTTON 2 TIMES');
+  //     console.log("check")
+  //     navigate('/Login')
+  //     console.log("check")
       
-    }
+  //   }
 
-  },[])
+  // },[])
 
   const location=useLocation();
   console.log(location);

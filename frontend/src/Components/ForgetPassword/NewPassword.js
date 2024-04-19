@@ -1,14 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Card, Form, FormLabel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ChangePassword } from '../../apicalls/User';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const NewPassword = () => {
   const emailRef = useRef('');
   const newPasswordRef = useRef('');
   const confirmPasswordRef = useRef('');
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = async () => {
     const email = emailRef.current.value;
@@ -25,37 +31,36 @@ const NewPassword = () => {
       return;
     }
 
-    // Perform password validation or other operations here
-    // console.log('Email:', email);
-    // console.log('New Password:', newPassword);
-    // console.log('Confirm Password:', confirmPassword);
-    else{
-     
-        const response=await ChangePassword({
-          userId:email,
-          password:confirmPassword
-        });
-        if(response)
-        {
-          if(response.success===true){
-            toast.success(response.message);
-            navigate('/login')
-          }
-          else{
-            toast.info(response.message);
-          }
-
-      }
-     
-      
-      else{
-        toast.info('authentication error')
-      }
-
+    if (confirmPassword.length < 6 || confirmPassword.length > 10) {
+      toast.info('Password length should be between 6 to 10 characters');
+      return;
     }
 
-    // Redirect to Login page
-    //navigate('/Login');
+    const passwordStrengthRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,10}$/;
+  if (!passwordStrengthRegex.test(newPassword)) {
+    toast.error('Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be 6 to 10 characters long');
+    return;
+  }
+
+    try {
+      const response = await ChangePassword({
+        userId: email,
+        password: confirmPassword,
+      });
+      if (response) {
+        if (response.success === true) {
+          toast.success(response.message);
+          navigate('/login');
+        } else {
+          toast.info(response.message);
+        }
+      } else {
+        toast.info('authentication error');
+      }
+    } catch (error) {
+      console.error('Error occurred:', error);
+      toast.error('An error occurred. Please try again later.');
+    }
   };
 
   return (
@@ -92,25 +97,35 @@ const NewPassword = () => {
                       </Form.Group>
                       <Form.Group className="mb-4" controlId="newPassword">
                         <FormLabel>Password</FormLabel>
-                        <Form.Control
-                          className="FormControl3"
-                          type="password"
-                          name="newPassword"
-                          placeholder="Enter Your New password"
-                          required
-                          ref={newPasswordRef}
-                        />
+                        <div className="password-input">
+                          <Form.Control
+                            className="FormControl3"
+                            type={showPassword ? 'text' : 'password'}
+                            name="newPassword"
+                            placeholder="Enter Your New password"
+                            required
+                            ref={newPasswordRef}
+                          />
+                          <Button className="password-toggle-btn" onClick={togglePasswordVisibility}>
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                          </Button>
+                        </div>
                       </Form.Group>
                       <Form.Group className="mb-4" controlId="confirmPassword">
                         <FormLabel>Confirm Password</FormLabel>
-                        <Form.Control
-                          className="FormControl3"
-                          type="password"
-                          name="confirmPassword"
-                          placeholder="Confirm Password"
-                          required
-                          ref={confirmPasswordRef}
-                        />
+                        <div className="password-input">
+                          <Form.Control
+                            className="FormControl3"
+                            type={showPassword ? 'text' : 'password'}
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            required
+                            ref={confirmPasswordRef}
+                          />
+                          <Button className="password-toggle-btn" onClick={togglePasswordVisibility}>
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                          </Button>
+                        </div>
                       </Form.Group>
                       <Button className="VOIR_LESPRODUITSbn9" type="button" onClick={handleSubmit}>
                         Submit

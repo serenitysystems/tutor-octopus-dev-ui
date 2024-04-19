@@ -17,11 +17,22 @@ const AddNewStudent = () => {
     firstName: "", lastName: "", email: "",
     mobileNumber: "", firstNameParent: "", lastNameParent: "",
     emailParent: "", mobileNumberParent: "", lessonCategory: "", lessonLength: "", price: "",
-    notes: "",emailReminder:"",smsReminder:"", managedBy: sessionStorage.getItem('userId')
+    notes: "",emailReminder:false,smsReminder:false, managedBy: sessionStorage.getItem('userId'),
+    smsCapableParent:false,smsCapable:false
+    
   };
   const [formData, setformData] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+
+
+
+  useEffect(()=>{
+    if(!sessionStorage.getItem('token')){
+      navigate('/Login')
+    }
+
+  },[])
 
 
   const handleChange = (e) => {
@@ -43,23 +54,28 @@ const AddNewStudent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //setloading(true);
+    
     let errors = validate(formData);
     setFormErrors(errors);
     console.log(formData)
     console.log(formErrors)
     if (Object.keys(formErrors).length === 0) {
       setIsSubmit(true);
+      setloading(true);
+    }
+    if (Object.keys(formErrors).length > 0) {
+      toast.info('Some of the details entered are incorrect. Scroll and Check');
     }
 
 
 
     //setloading(true);
-    console.log(loading)
+    // console.log(loading)
     if (isSubmit === true) {
-      if (sessionStorage.getItem('token')) {
+      
         //console.log("reached")
         const response = await AddNewStudentRouter(formData);
+        //console.log(response)
         if (response) {
           setIsSubmit(false)
           //console.log(response.message)
@@ -80,13 +96,18 @@ const AddNewStudent = () => {
 
             // alert(response.message)
           }
+          else if(response.status===502){
+            toast.info('User is not authorized')
+            navigate('/login')
+          }
 
 
         }
-      }
+      
       else {
         navigate('/Login')
       }
+      console.log(response)
     }
 
 
@@ -133,11 +154,11 @@ const AddNewStudent = () => {
     }
     // if (!values.mobileNumber) {
     //   errors.mobileNumber = "mobileNumber is ";
-    //    } else if (values.mobileNumber.length < 12) {
-    //   errors.mobileNumber = "mobile Numbermust be more than 10 digit";
-    // } else if (values.mobileNumber.length > 10) {
-    //   errors.mobileNumber = "mobile Number cannot exceed more than 10 digit";
-    // }
+        else if (values.mobileNumber.length < 12) {
+      errors.mobileNumber = "mobile Numbermust be more than 10 digit";
+    } else if (values.mobileNumber.length > 13) {
+      errors.mobileNumber = "mobile Number cannot exceed more than 10 digit";
+    }
 
 
 
@@ -171,6 +192,11 @@ const AddNewStudent = () => {
     if (!values.mobileNumberParent) {
       errors.mobileNumberParent = "lesson Length is a required !";
     }
+    else if (values.mobileNumberParent.length < 12) {
+        errors.mobileNumberParent = "mobile Numbermust be more than 10 digit";
+      } else if (values.mobileNumberParent.length > 13) {
+        errors.mobileNumberParent = "mobile Number cannot exceed more than 10 digit";
+      }
     // if (!values.mobileNumberParent) {
     //   errors.mobileNumberParent = "mobileNumber is ";
     //    } else if (values.mobileNumberParent.length < 12) {

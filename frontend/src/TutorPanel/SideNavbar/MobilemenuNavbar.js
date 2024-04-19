@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CiShare2 } from 'react-icons/ci'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap';
 
 const MobilemenuNavbar = ({userData}) => {
+
+
+
+    
     const navigate = useNavigate();
     const location=useLocation();
 
@@ -26,6 +30,13 @@ const MobilemenuNavbar = ({userData}) => {
         navigate('/Login')
     
       };
+
+      useEffect(()=>{
+        if(!sessionStorage.getItem('token')){
+          navigate('/Login')
+        }
+    
+      },[])
   return (
     <div>
       <div className='desktop13'>
