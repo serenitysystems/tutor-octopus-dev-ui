@@ -306,43 +306,6 @@ const StudentList = ({ userData }) => {
                         </Stack>
 
 
-                        {/* <Stack direction="horizontal" gap={3} className='row56 bbrow'  >
-                            <div> <Dropdown className="">
-                                <Dropdown.Toggle variant="" id="dropdown-basic" className='filter45 text-white'>
-                                    Montrer :  {itemsPerPage}
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                    <Dropdown.Item onClick={() => handleItemsPerPageChange(5)}>5</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => handleItemsPerPageChange(10)}>10</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => handleItemsPerPageChange(15)}>15</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => handleItemsPerPageChange(20)}>20</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => handleItemsPerPageChange(25)}>25</Dropdown.Item>
-                                    Add more options as needed
-                                </Dropdown.Menu>
-                            </Dropdown></div>
-
-                            <div className="p-2"><Row>
-                                            <Col> <Form.Control
-                                                type="text"
-                                                placeholder="Rechercher"
-                                                value={searchTerm}
-                                                onChange={(e) => setSearchTerm(e.target.value)} className='reacherch56'
-                                            /></Col>
-                                            <Col>
-                                                <CiSearch className='reacherch561' style={{ color: "black" }} />
-                                            </Col>
-                                        </Row></div>
-
-
-                        </Stack> */}
-
-
-
-
-
-                        {/* Filter dropdown */}
-
 
                         <div style={{ overflowX: "auto" }}>
     {
@@ -386,7 +349,7 @@ const StudentList = ({ userData }) => {
                                 <td>{value.firstName}</td>
                                 <td>{value.lastName}</td>
                                 <td>{value.email}</td>
-                                <td>{value.batch}</td>
+                                <td style={{color:value.batch.length>0?"black":"red"}}>{value.batch.length>0?value.batch:"No Batch Assignment"}</td>
                                 <td>
                                     <button onClick={()=>handleShow(value.email)} className="btn btn- bnnbtn" >
                                         <FaRegEdit style={{color:"green"}} />

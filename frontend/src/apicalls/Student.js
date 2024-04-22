@@ -74,6 +74,52 @@ export const getStudentRecordBatchRouter=async(data)=>{
 }
 
 
+export const getStudentWithoutBatch=async(id)=>{
+     //console.log(id);
+     try{
+          const response=await axios.get(`${baseurl}/student/read/WithoutBatch`,{
+               params:{id:id}
+          });
+          // console.log(response.data)
+          return response.data;
+
+     }catch(err){
+          return err.response.data
+     }
+}
+
+
+export const AddStudentWithoutBatch=async(data)=>{
+     //console.log(id);
+     try{
+          const response=await axios.patch(`${baseurl}/student/add/WithoutBatch`,data);
+          // console.log(response.data)
+          return response.data;
+
+     }catch(err){
+          return err.response.data
+     }
+}
+
+
+
+export const getStudentReadBatch=async(data)=>{
+     //console.log(id);
+     try{
+          const response=await axios.get(`${baseurl}/student/read/Batch`,{
+               params:{id:data.id,batch:data.batch}
+          });
+          // console.log(response.data)
+          return response.data;
+
+     }catch(err){
+          return err.response.data
+     }
+}
+
+
+
+
 
 
 

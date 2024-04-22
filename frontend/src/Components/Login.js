@@ -4,7 +4,7 @@ import './Login.css'
 import Header from '../Header'
 import Footer from '../Footer'
 import { toast } from 'react-toastify';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, json, useLocation, useNavigate } from 'react-router-dom';
 import { LoginUser } from '../apicalls/User';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6'
 
@@ -51,6 +51,7 @@ const Login = ({ onLogin }) => {
                 sessionStorage.setItem('userId',response.data.id);
                 sessionStorage.setItem('firstName',response.data.firstName);
                 sessionStorage.setItem('lastName',response.data.lastName);
+                sessionStorage.setItem('batch',JSON.stringify(response.data.batch))
                 onLogin(response.data);
                 navigate('/Home')
 
