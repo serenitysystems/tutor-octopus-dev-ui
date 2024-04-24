@@ -277,8 +277,6 @@ const AddNewStudent = () => {
                   <Form.Label><b>First Name</b></Form.Label>
                   <Form.Control type="text" name="firstName" value={formData.firstName}
                     onChange={handleChange}
-
-
                   />
                   <p className="pform">{formErrors.firstName}</p>
                 </Form.Group>

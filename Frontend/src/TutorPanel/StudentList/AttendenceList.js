@@ -50,7 +50,7 @@ const Attendencelist = () => {
         if (event.target.value === "Add_New_Batch") {
             console.log(event.target.value)
 
-            handleAddNewBatch();
+            // handleAddNewBatch();
         }
         else {
             setButtonVisible(!attendedBatches.includes(event.target.value));

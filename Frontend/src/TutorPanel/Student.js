@@ -157,6 +157,7 @@ const Student = ({ userData }) => {
         id:sessionStorage.getItem('userId')
       }
       const response= await updateTeacherBatchRouter(data);
+      console.log(response)
     }
     // else if (selectedStudents.length === 0) {
     //   toast.error('Select Students for this batch')
@@ -182,9 +183,16 @@ const Student = ({ userData }) => {
 
   const handleSelectBatch = (e) => {
     setSelectedBatch(e.target.value);
-    console.log(batchvalue)
-    getStudentReadBatchData()
+    // console.log(selectedBatch)
+    // getStudentReadBatchData()
+    
   };
+
+  useEffect(() => {
+
+
+    getStudentReadBatchData()
+}, [selectedBatch]);
 
 
 
@@ -287,6 +295,7 @@ const Student = ({ userData }) => {
                               <Dropdown.Menu className='menu87'>
                               
                                 <select value={selectedBatch} onChange={handleSelectBatch}>
+                                <option  value='Select Batch'>Select Batch</option>
                                   {batchName.map((name, index) => (
                                     <option key={index} value={name}>{name}</option>
                                   ))}

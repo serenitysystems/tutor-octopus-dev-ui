@@ -42,87 +42,78 @@ function App() {
 
 
   const [userData, setUserData] = useState({
-    user:"",
-    token:"",
-    firstName:"",
-    lastName:""
+    user: "",
+    token: "",
+    firstName: "",
+    lastName: ""
 
   });
 
   // Function to receive response data from Login component
   const handleLogin = (data) => {
-      setUserData(data);
+    setUserData(data);
   };
   // const Tutor_auth_path=['Home','Quiz','Subscription','OnlineResources','Expenses_Revenue','ExamFeatures'];
   // const location=useLocation().pathname;
   // if(Tutor_auth_path.includes(location)){
-   
+
   // }
 
 
   // if(sessionStorage.)
- 
+
 
 
   return (
     <div className="App">
 
       <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Landing />} />
-        {/* <Route path='/About' element={<About />} /> */}
-        <Route path='/Login' element={<Login onLogin={handleLogin}/>} />
-        <Route path='/Signup' element={<Signup />} />
-        {userData && <Route path='/Subscription'  element={<Subscription userData={userData}/> } />}
-        {userData &&<Route path='/Profile' element={<Student_Redirect userData={userData}/>}/>}
-         {userData &&  <Route path='/Expenses_Revenue' element={<Expenses_Revenue userData={userData}/>}/>}
-         {userData &&  <Route path='/ExamFeatures' element={<ExamFeatures userData={userData}/>}/>}
-         {userData &&  <Route path='/Quiz' element={<Quiz userData={userData}/>}/>}
-         {userData && <Route path='/Home'  element={<Home userData={userData} />} />}
-         {userData && <Route path='/Announcements' element={<Announcements userData={userData} />} />}
-         {userData && <Route path='/Website' element={<Website userData={userData} />} />}
-        {userData && <Route path='/Business_Report' element={<Business_Report userData={userData} />} />}
-        {userData && <Route path='/Event_Calendar' element={<Event_Calendar userData={userData}/>} />}
+        <Routes>
+          <Route path='/' element={<Landing />} />
+          {/* <Route path='/About' element={<About />} /> */}
+          <Route path='/Login' element={<Login onLogin={handleLogin} />} />
+          <Route path='/Signup' element={<Signup />} />
+          {userData && <Route path='/Subscription' element={<Subscription userData={userData} />} />}
+          {userData && <Route path='/Profile' element={<Student_Redirect userData={userData} />} />}
+          {userData && <Route path='/Expenses_Revenue' element={<Expenses_Revenue userData={userData} />} />}
+          {userData && <Route path='/ExamFeatures' element={<ExamFeatures userData={userData} />} />}
+          {userData && <Route path='/Quiz' element={<Quiz userData={userData} />} />}
+          {userData && <Route path='/Home' element={<Home userData={userData} />} />}
+          {userData && <Route path='/Announcements' element={<Announcements userData={userData} />} />}
+          {userData && <Route path='/Website' element={<Website userData={userData} />} />}
+          {userData && <Route path='/Business_Report' element={<Business_Report userData={userData} />} />}
+          {userData && <Route path='/Event_Calendar' element={<Event_Calendar userData={userData} />} />}
 
-        {/* <Route path='/TutorHome'  element={<TutorHome />} /> */}
-          {userData &&<Route path='/Student' element={<Student userData={userData}/>} />}
-        {/* <Route path='/Calendar' element={<Calendar/>} /> */}
-        {userData && <Route path='/AddNewStudent' element={<AddNewStudent userData={userData}/>} />}
-          {userData &&<Route path='/OnlineResources' element={<OnlineResources userData={userData}/>} />}
-          {userData &&  <Route path='/Attendence' element={<Attendance userData={userData}/>} />}
-           <Route path='/UploadFiles' element={<UploadFiles/>}/>
-            {<Route path='/TopBar' element={<TopBar/>}/>}
+          {/* <Route path='/TutorHome'  element={<TutorHome />} /> */}
+          {userData && <Route path='/Student' element={<Student userData={userData} />} />}
+          {/* <Route path='/Calendar' element={<Calendar/>} /> */}
+          {userData && <Route path='/AddNewStudent' element={<AddNewStudent userData={userData} />} />}
+          {userData && <Route path='/OnlineResources' element={<OnlineResources userData={userData} />} />}
+          {userData && <Route path='/Attendence' element={<Attendance userData={userData} />} />}
+          <Route path='/UploadFiles' element={<UploadFiles />} />
+          {<Route path='/TopBar' element={<TopBar />} />}
 
-        <Route path='/Testings' element={<Testings />} />
-        <Route path='/TermsofService' element={<TermsofService/>} />
-        <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
-        <Route path='/ForgetPassword' element={<ForgetPassword />} />
-         <Route path='/OTP' element={<OTP />} />
-         <Route path='/NewPassword' element={<NewPassword />} />
-        {/* <div>
+          <Route path='/Testings' element={<Testings />} />
+          <Route path='/TermsofService' element={<TermsofService />} />
+          <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
+          <Route path='/ForgetPassword' element={<ForgetPassword />} />
+          <Route path='/OTP' element={<OTP />} />
+          <Route path='/NewPassword' element={<NewPassword />} />
+          {/* <div>
         <topnavbar/>
         <Routes>....</Routes>
         </div> */}
-          
-        
-          
-         
-         <Route path='/BusinessTutor' element={<BusinessTutor/>}/>
-        {userData && <Route path='/StudentList' element ={<StudentList userData={userData}/>}/>}
-        
-          
-      </Routes>
-      
-      
-      
-      
-      
-      
+
+
+
+
+          <Route path='/BusinessTutor' element={<BusinessTutor />} />
+          {userData && <Route path='/StudentList' element={<StudentList userData={userData} />} />}
+
+
+        </Routes>
       </BrowserRouter>
-      
-      <ToastContainer/>
-
-
+      <ToastContainer />
     </div>
   );
 }

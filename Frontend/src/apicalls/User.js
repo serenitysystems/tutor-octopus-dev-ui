@@ -163,9 +163,9 @@ export const getTeacherBatchRouter=async(data)=>{
 
 
 export const updateTeacherBatchRouter=async (data)=>{
-     //console.log(user)
+     console.log(data)
      try{
-          const response=await axios.put(`${baseurl}/teacher/update/batch`,data);
+          const response=await axios.patch(`${baseurl}/teacher/update/batch`,data);
           return response.data;
      }
      catch(error)

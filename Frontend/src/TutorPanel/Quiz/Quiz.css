@@ -28,9 +28,33 @@
 }
 
 .Quiz4 {
-   width: 100%;
+   /* width: 100%; */
    
 }
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Buttons will be evenly spaced */
+  }
+  
+  .button {
+    color: white;
+    background-color: green; /* Adjust color as needed */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Media query for small screens */
+  @media screen and (max-width: 768px) {
+    .button-container {
+      flex-direction: column; /* Buttons will be displayed in a column */
+      align-items: center; /* Buttons will be centered horizontally */
+    }
+  }
+  
+  
 
 
 
@@ -46,10 +70,11 @@
         border-radius: 20px;
     }
     .Quiz4 {
-        margin-top: 0px !important;
-        width: 50% !important;
+        /* margin-top: 0px !important; */
+        /* width: 50% !important; */
        
     }
+    
     .addnewcard89.card {
         margin: 140px 10px 0px 10px !important;
     }
