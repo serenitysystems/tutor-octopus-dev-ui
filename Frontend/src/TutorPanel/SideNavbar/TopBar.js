@@ -12,7 +12,7 @@ const TopBar = ({userData}) => {
   // console.log(sessionStorage.getItem('firstName').charAt[0])
   // console.log(sessionStorage.getItem('lastName')).charAt(0);
 
-
+  // const location=useLocation().pathname;
   let profilename=sessionStorage.getItem('firstName').charAt(0)+sessionStorage.getItem('lastName').charAt(0);
 
 
@@ -31,7 +31,7 @@ const TopBar = ({userData}) => {
   // },[])
 
   const location=useLocation();
-  console.log(location);
+  console.log(location.pathname);
   console.log(userData)
   return (
     <div>
@@ -50,7 +50,7 @@ const TopBar = ({userData}) => {
               <CiShare2 className='share1' /> <IoIosNotificationsOutline className='share1' />
 
               {/* <Link to='/Profile'><span className='tst'>{userData.firstName[0]+userData.lastName[0]}</span></Link> */}
-              <Link to='/Profile'><span className='tst'>{profilename}</span></Link>
+              <Link to={location.pathname==='/Profile'?'/Home':'/Profile'}><span className='tst'>{profilename}</span></Link>
             </Navbar.Text>
 
             <Link to='/Subscription' className='Subscribe'>Subscribe </Link>

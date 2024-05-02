@@ -28,7 +28,8 @@
 }
 
 .Quiz4 {
-   /* width: 100%; */
+   width: 50%;
+   height: 50%;
    
 }
 
@@ -45,6 +46,47 @@
     padding: 10px 20px;
     cursor: pointer;
   }
+
+
+  .question-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.question-heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.option-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.option-label {
+    margin-right: 10px;
+}
+
+.option-input {
+    flex: 1;
+}
+
+.option-text {
+    width: 100%;
+}
+
+.option-checkbox {
+    margin-left: 10px;
+}
+
+.checkbox-input {
+    margin-right: 5px;
+}
+
   
   /* Media query for small screens */
   @media screen and (max-width: 768px) {

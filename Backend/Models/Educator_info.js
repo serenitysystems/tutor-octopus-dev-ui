@@ -39,28 +39,6 @@ const Educator_info=new mongoose.Schema({
             type:String
         }
     }],
-    
-    quiz:[{
-        
-            question:{
-                type:String
-            },
-            optionA:{
-                type:String
-            },
-            optionB:{
-                type:String
-            },
-            optionC:{
-                type:String
-            },
-            optionD:{
-                type:String
-            },
-            correct:{
-                type:String
-            }
-        }],
     batch:{
         type:[String],
         required:true

@@ -44,7 +44,7 @@ const MobilemenuNavbar = ({userData}) => {
                     <a className="navbar-brand" >{location.pathname.substring(1)}</a>
 
                     <CiShare2 className='share1' /> <IoIosNotificationsOutline className='share1' />
-                    <Link to='/Profile'><span className='tst'>{profilename}</span></Link>
+                    <Link to={location.pathname==='/Profile'?'/Home':'/Profile'}><span className='tst'>{profilename}</span></Link>
 
 
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

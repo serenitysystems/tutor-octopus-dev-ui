@@ -6,6 +6,8 @@ const cors=require('cors');
 const userRouter=require('./Router/userRouter')
 const studentRouter=require('./Router/studentRouter')
 const calenderRouter=require('./Router/calenderRouter')
+const questionRouter=require('./Router/questionRouter')
+
 const bodyParser = require('body-parser');
 
 
@@ -31,6 +33,7 @@ mongoose.connect(Connection_String).then(()=>{
 app.use(userRouter);
 app.use(studentRouter);
 app.use(calenderRouter);
+app.use(questionRouter);
 
 
 //Connecting to server

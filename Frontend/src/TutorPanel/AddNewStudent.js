@@ -11,6 +11,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { AddNewStudentRouter } from "../apicalls/Student";
+import BatchList from "../BackendComp/BatchList";
 
 const AddNewStudent = () => {
   const initialValues = {
@@ -349,12 +350,13 @@ const AddNewStudent = () => {
                                 onChange={handleChange}
                               >
                                 <option value=" 30">Select from Batch</option>
-                                {
+                                {/* {
                                   batchName.map((item)=>(
                                     <option value={item}>{item}</option>
                                   ))
 
-                                }
+                                } */}
+                                  <BatchList/>
                                 
 
                                 {/* <option value='Batch-1'  >Batch-1</option>

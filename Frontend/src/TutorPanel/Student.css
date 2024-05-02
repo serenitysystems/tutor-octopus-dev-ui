@@ -1,62 +1,36 @@
-button#controlled-tab-example-tab-home {
-    border: none;
-    color: rgba(17, 119, 254, 1);
-    margin: 0px 10px 0px 10px;
-    font-size: 19px;
-    padding: 0px;
-    font-weight: 500;
-    background-color: transparent;
-    border-bottom: 2px solid rgba(17, 119, 254, 1);
+/* Common styles for both tabs */
+button#controlled-tab-example-tab-home,
+button#controlled-tab-example-tab-batch {
+  border: none;
+  color: rgba(17, 119, 254, 1);
+  font-size: 19px;
+  font-weight: 500;
+  padding: 0px;
+  margin: 0px 10px;
+  border-bottom: 2px solid white; /* Set default border color */
+  background-color: transparent;
 }
 
-button#controlled-tab-example-tab-profile {
-    border: none;
-    color: rgba(124, 124, 124, 1);
-    font-size: 19px;
-    font-weight: 500;
-    padding: 0px;
-    margin: 0px 10px 0px 40px;
-
-    background-color: transparent;
+/* Styles for active tab */
+button#controlled-tab-example-tab-home[aria-selected="true"],
+button#controlled-tab-example-tab-batch[aria-selected="true"] {
+  border-bottom-color: rgba(17, 119, 254, 1); /* Set border color to blue when active */
 }
 
-button#controlled-tab-example-tab-home:active {
-    border: none;
-    border-bottom: 2px solid rgba(17, 119, 254, 1);
-    margin: 0px 10px 0px 10px;
-    color: rgba(17, 119, 254, 1);
-    padding: 0px;
-    font-size: 19px;
-    font-weight: 500;
-    background-color: transparent;
+/* Styles for when the tab is hovered */
+button#controlled-tab-example-tab-home:hover,
+button#controlled-tab-example-tab-batch:hover {
+  border-bottom-color: rgba(17, 119, 254, 1); /* Set border color to blue when hovered */
+  color: rgb(157, 184, 219);
 }
 
-button#controlled-tab-example-tab-home:hover {
-    border: none;
-    border-bottom: 2px solid rgba(17, 119, 254, 1);
-    margin: 0px 10px 0px 10px;
-    color: rgba(17, 119, 254, 1);
-    padding: 0px;
-    font-size: 19px;
-    font-weight: 500;
-    background-color: transparent;
-}
 
-button#controlled-tab-example-tab-profile:hover {
-    border: none;
-    border-bottom: 2px solid rgba(17, 119, 254, 1);
-    color: rgba(17, 119, 254, 1);
-    padding: 0px;
-    margin: 0px 10px 0px 40px;
-    font-size: 19px;
-    font-weight: 500;
-    background-color: transparent;
-}
 
 
 
 ul#controlled-tab-example {
     border: none;
+    color: rgb(116, 172, 250);
 }
 
 

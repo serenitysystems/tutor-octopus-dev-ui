@@ -142,6 +142,7 @@ const Announcements = ({ userData }) => {
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = AnnouncementData.slice(indexOfFirstItem, indexOfLastItem);
+    const [batch, setBatch] = useState([]);
 
 
 
@@ -174,38 +175,55 @@ const Announcements = ({ userData }) => {
         return errors;
     };
 
+    useEffect(()=>{
+        const newset = Array.from(new Set(JSON.parse(sessionStorage.getItem('batch'))));
+        setBatch(newset);       
+
+    },[batch])
+
 
 
     return (
-        <div>
-            <MobilemenuNavbar userData={userData} />
+      <div>
+        <MobilemenuNavbar userData={userData} />
 
-            <div class="container-fluid">
-                <div class="row">
-                    <nav class="col-md-3 d-none d-md-block bg-light sidebar">
-                        <Sidenavbar />
-                    </nav>
-                    <main role="main" class="col-md-8 col-lg-9 sidebar5">
-                        <TopBar userData={userData} />
-                        <div class="dashboard-header px-md-4">
-                            {/* <h1 class="h2">Dashboard</h1> */}
+        <div class="container-fluid">
+          <div class="row">
+            <nav class="col-md-3 d-none d-md-block bg-light sidebar">
+              <Sidenavbar />
+            </nav>
+            <main role="main" class="col-md-8 col-lg-9 sidebar5">
+              <TopBar userData={userData} />
+              <div class="dashboard-header px-md-4">
+                {/* <h1 class="h2">Dashboard</h1> */}
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="success"
+                    id="dropdown-basic"
+                    className="addnewdg8 addnewdg11"
+                  >
+                    <span className="adggsh">
+                      {" "}
+                      Add Announcements{" "}
+                      <IoMdArrowDropdown
+                        className="IoMdArrowDropdown"
+                        style={{ fontSize: "26px" }}
+                      />
+                    </span>
+                  </Dropdown.Toggle>
 
-                            <Dropdown>
-                                <Dropdown.Toggle variant="success" id="dropdown-basic" className='addnewdg8 addnewdg11'>
-                                    <span className='adggsh'> Add Announcements <IoMdArrowDropdown className="IoMdArrowDropdown" style={{ fontSize: "26px" }} /></span>
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu className='menu87'>
-                                    <Button variant="" onClick={handleShow} style={{ border: "none" }}>
-                                        Add Announcements
-                                    </Button>
-
-                                </Dropdown.Menu>
-                            </Dropdown>
-
-                            <Card className='addnewcard'>
-
-                                {/* <Card.Body className='addstutnet1'>
+                  <Dropdown.Menu className="menu87">
+                    <Button
+                      variant=""
+                      onClick={handleShow}
+                      style={{ border: "none" }}
+                    >
+                      Add Announcements
+                    </Button>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Card className="addnewcard">
+                  {/* <Card.Body className='addstutnet1'>
                                     <img src='./img/Announcements.png' className='addstutnet3 my-5' />
                                     <h5 className='text-center mb-4' style={{ marginTop: "-20px" }}>You don't have any Announcements</h5>
 
@@ -214,51 +232,58 @@ const Announcements = ({ userData }) => {
                                     <br></br><br></br>
                                 </Card.Body> */}
 
-
-                                {buttonAnnouncement === true ? (
-                                    <Button style={{ width: "15rem" }} className='btnhj' onClick={handleGetAnnouncement}>
-                                        Show Announcement
-                                    </Button>
-
-                                    
-                                ) : (
-                                    <div>
-                                       <table className="table table-striped">
-                                            <thead className='head56'>
-                                                <tr className='head56'>
-                                                
-                                                    <th scope="col" className='th78'>Sl.no</th>
-                                                    <th scope="col" className='th78'>Subject</th>
-                                                    <th scope="col" className='th78'>Description</th>
-                                                    <th scope="col" className='th78'>Batch</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {AnnouncementData.map((item, index) => (
-                                                    <tr key={item._id}>
-                                                    <td>{index + 1}</td>
-                                                    <td>{item.subject}</td>
-                                                    <td>{item.description}</td>
-                                                    <td>{item.batch}</td>
-                                                </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                     <div className='paginationj'>
-                                     {/* <Pagination >
+                  {buttonAnnouncement === true ? (
+                    <Button
+                      style={{ width: "15rem" }}
+                      className="btnhj"
+                      onClick={handleGetAnnouncement}
+                    >
+                      Show Announcement
+                    </Button>
+                  ) : (
+                    <div>
+                      <table className="table table-striped">
+                        <thead className="head56">
+                          <tr className="head56">
+                            <th scope="col" className="th78">
+                              Sl.no
+                            </th>
+                            <th scope="col" className="th78">
+                              Subject
+                            </th>
+                            <th scope="col" className="th78">
+                              Description
+                            </th>
+                            <th scope="col" className="th78">
+                              Batch
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {AnnouncementData.map((item, index) => (
+                            <tr key={item._id}>
+                              <td>{index + 1}</td>
+                              <td>{item.subject}</td>
+                              <td>{item.description}</td>
+                              <td>{item.batch}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                      <div className="paginationj">
+                        {/* <Pagination >
                                             {Array.from({ length: Math.ceil(AnnouncementData.subject.length / itemsPerPage) }).map((_, index) => (
                                                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
                                                     {index + 1}
                                                 </Pagination.Item>
                                             ))}
                                         </Pagination> */}
-                                     </div>
-                                    </div>
-                                )}
-                            </Card>
-
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            {/* <Form.Select aria-label="Default select example" style={{ borderRadius: "30px" }}
+                      </div>
+                    </div>
+                  )}
+                </Card>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {/* <Form.Select aria-label="Default select example" style={{ borderRadius: "30px" }}
                                 value={selectedBatch}
                                
                                 onChange={handleBatchChange}
@@ -269,83 +294,76 @@ const Announcements = ({ userData }) => {
                                 <option value='Batch-1'  >Batch-1</option>
                                 <option value="Batch-2">Batch-2</option>
                               </Form.Select> */}
+                <Modal show={show} onHide={handleClose} animation={false}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>
+                      <h5>Add Announcements</h5>
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Form onSubmit={handleSubmit}>
+                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Subject</Form.Label>
+                        <Form.Control
+                          type="text"
+                          className="forn89"
+                          maxLength={40}
+                          name="subject"
+                          value={data.subject}
+                          onChange={handleChange}
+                        />
 
+                        <p className="pform">{formErrors.subject}</p>
+                      </Form.Group>
 
+                      <Form.Group
+                        className="mb-3"
+                        controlId="exampleForm.ControlTextarea1"
+                      >
+                        <Form.Label>Descriptions</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows={3}
+                          style={{ borderRadius: "30px" }}
+                          maxLength={90}
+                          name="description"
+                          value={data.description}
+                          onChange={handleChange}
+                        />
+                        <p className="pform">{formErrors.description}</p>
+                      </Form.Group>
 
+                      <Form.Select
+                        aria-label="Default select example"
+                        style={{ borderRadius: "30px" }}
+                        value={data.batch}
+                        name="batch"
+                        onChange={handleChange}
+                      >
+                        <option>Select from Batch</option>
+                        {/* c<option value='Batch-1'  >Batch-1</option> */}
+                        {batch.map((item) => (
+                          <option value={item}>{item}</option>
+                        ))}
+                      </Form.Select>   
 
-
-                            <Modal show={show} onHide={handleClose} animation={false}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title><h5>Add Announcements</h5></Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <Form onSubmit={handleSubmit}>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <Form.Label>Subject</Form.Label>
-                                            <Form.Control
-                                                type="text"
-                                                className='forn89'
-                                                maxLength={40}
-                                                name='subject'
-                                                value={data.subject}
-                                                onChange={handleChange}
-                                            />
-
-                                            <p className="pform">{formErrors.subject}</p>
-                                        </Form.Group>
-
-                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                            <Form.Label>Descriptions</Form.Label>
-                                            <Form.Control
-                                                as="textarea"
-                                                rows={3}
-                                                style={{ borderRadius: "30px" }}
-
-                                                maxLength={90}
-                                                name='description'
-                                                value={data.description}
-                                                onChange={handleChange}
-
-
-                                            />
-                                            <p className="pform">{formErrors.description}</p>
-                                        </Form.Group>
-
-                                        <Form.Select aria-label="Default select example" style={{ borderRadius: "30px" }}
-                                            value={data.batch}
-                                            name="batch"
-                                            onChange={handleChange}
-                                        >
-                                            <option>Select from Batch</option>
-                                            <option value='Batch-1'  >Batch-1</option>
-                                            <option value="Batch-2">Batch-2</option>
-                                        </Form.Select>
-
-                                        <div className='floah'>
-                                            <Button type='submit' variant="" className='btnhj' >
-                                                Save
-                                            </Button>
-                                            {/* <Button variant="secondary" className='btnh1j'>
+                      <div className="floah">
+                        <Button type="submit" variant="" className="btnhj">
+                          Save
+                        </Button>
+                        {/* <Button variant="secondary" className='btnh1j'>
                                                 Cancel
                                             </Button> */}
-                                        </div>
-
-                                    </Form>
-                                </Modal.Body>
-
-                            </Modal>
-                        </div>
-
-
-
-                    </main>
-                </div>
-
-
-
-            </div>
+                      </div>
+                    </Form>
+                  </Modal.Body>
+                </Modal>
+              </div>
+            </main>
+          </div>
         </div>
-    )
+      </div>
+    );
 }
 
 

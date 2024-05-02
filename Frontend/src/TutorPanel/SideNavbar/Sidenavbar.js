@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
 
-import { Link,useNavigate } from 'react-router-dom'
+import { Link,useNavigate,use, useLocation } from 'react-router-dom'
 import { Col, Container, Row, Modal, Button } from 'react-bootstrap';
 
 const Sidenavbar = () => {
     const navigate = useNavigate();
+   
   const [showModalLogout, setShowModalLogout] = useState(false);
     const handleLogout = () => {
         setShowModalLogout(true);
@@ -42,7 +43,7 @@ const Sidenavbar = () => {
                         <Link to="/Student" className="navlinkjh nav-link"><img src="./img/Student1.png" className="logoimgy1 " />Student</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/Attendence" className="navlinkjh nav-link"><img src="./img/Student1.png" className="logoimgy1 " />Attendence</Link>
+                        <Link to="/Attendence" className="navlinkjh nav-link"><img src="./img/Attendance.png" className="logoimgy1 " />Attendence</Link>
                     </li>
                     
                     <li class="nav-item">
@@ -55,7 +56,7 @@ const Sidenavbar = () => {
                         <Link to="/Expenses_Revenue" className="navlinkjh nav-link"><img src="./img/Expenses.png" className="logoimgy1 " />Expenses & Revenue</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to="/Quiz" className="navlinkjh nav-link"><img src="./img/Quiz.png" className="logoimgy1 " />Quiz</Link>
+                        <Link to="/Quiz" className="navlinkjh nav-link"><img src="./img/Quiz-1.png" className="logoimgy1 " />Quiz</Link>
                     </li>
                     <li class="nav-item">
                         <Link to="/ExamFeatures" className="navlinkjh nav-link"><img src="./img/ExamFeatures.png" className="logoimgy1 " />Exam Features</Link>

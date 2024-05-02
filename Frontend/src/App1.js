@@ -31,7 +31,7 @@ function App1() {
 
                     <PricingCard
                         img="/img/img-1.png"
-                        price={selectMonthly ? "00 RS." : "188.9"}
+                        price={selectMonthly ? "00 RS." : "00 RS"}
                         storage="Free"
                         users="http://localhost:3000/loginhttp://localhost:3000/login"
                         sendUp="Free"

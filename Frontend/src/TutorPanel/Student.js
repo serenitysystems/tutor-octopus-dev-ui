@@ -142,6 +142,12 @@ const Student = ({ userData }) => {
       toast.info('Give name to this batch')
     }
     else if (getbatchname.length>0) {
+      console.log("check");
+      if(batchName.includes(getbatchname)){
+        toast.info('Batch name already exist');
+        return;
+      }
+     
       console.log("check")
       setShow(false);
       toast.success("Added Batch");
@@ -263,13 +269,9 @@ const Student = ({ userData }) => {
 
                       <StudentList />
                     </Card>
-
-
                   </div>
                 </Tab>
-                <Tab eventKey="profile" title="Batches">
-
-
+                <Tab eventKey="batch" title="Batches">
                   <div>
                     <Card className='addnewcard'>
                       <Card.Header className='header56'>
@@ -331,8 +333,6 @@ const Student = ({ userData }) => {
                   </Table>
                     </Card>
                   </div>
-
-
                 </Tab >
 
 

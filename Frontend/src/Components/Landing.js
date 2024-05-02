@@ -27,7 +27,10 @@ const Landing = () => {
 
                             <div class="col-xs-12 col-sm-6">
                                 <div class="box1">
-                                    <img src='./img/line2.png' className='lines1' /> <h1 className='explore'>Explore the world of<br></br> Teaching</h1>
+                                    <img src='./img/line2.png' className='lines1' />
+                                    {/* <img src='https://drive.google.com/file/d/1FacYjQ8INrXlydgVEoAyGjrep-XrXrcz/view?usp=sharing' className='lines1' /> */}
+                                    
+                                     <h1 className='explore'>Explore the world of<br></br> Teaching</h1>
                                     <p className='p1'>Now you can easily deepen your chosen so that you can get the tutor you want.  </p>
                                     <Stack direction="horizontal" gap={3} className='stakc'>
                                         <div className="p-2"><Button onClick={()=>navigate('/Signup')} variant="" className='getstart'>Get started </Button></div>
@@ -94,6 +97,7 @@ const Landing = () => {
 
                             <div class="col-xs-12 col-sm-6">
                                 <img src='./img/group.png' className='imggilrss' />
+                                {/* <img src='./img/group.png' className='imggilrss' /> */}
                             </div>
 
                             <div class="col-xs-12 col-sm-6">

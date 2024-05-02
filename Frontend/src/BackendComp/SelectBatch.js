@@ -1,9 +1,7 @@
 import { useState } from "react";
 
 const SelectBatch = ({ data, onBatchSelect }) => {
-
-
-
+    
     const [selectedBatch, setSelectedBatch] = useState('');
    const batch= Array.from(new Set(JSON.parse(sessionStorage.getItem('batch'))));
 

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-function Description() {
+function Description({onSubjectChange,onDescriptionChange}) {
   const [inputValue, setInputValue] = useState('');
   const [textareaValue, setTextareaValue] = useState('');
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
+    onSubjectChange(inputValue)
+
   };
 
   const handleTextareaChange = (e) => {
     setTextareaValue(e.target.value);
+    onDescriptionChange(textareaValue);
   };
 
   const handleSubmit = (e) => {
@@ -24,7 +27,7 @@ function Description() {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="inputField">
-        <Form.Label>Input:</Form.Label>
+        <Form.Label>Subject</Form.Label>
         <Form.Control
           type="text"
           value={inputValue}
@@ -32,7 +35,7 @@ function Description() {
         />
       </Form.Group>
       <Form.Group controlId="textareaField">
-        <Form.Label>Text Area:</Form.Label>
+        <Form.Label>Description</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}
