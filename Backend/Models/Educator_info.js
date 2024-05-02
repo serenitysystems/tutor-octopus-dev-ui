@@ -26,7 +26,6 @@ const Educator_info=new mongoose.Schema({
         type: String,
         required: true,
     },
-
     announcement:[{
         
         batch:{

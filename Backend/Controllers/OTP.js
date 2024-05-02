@@ -16,7 +16,8 @@ exports.OtpController=async (req, res) => {
 
     // Generate OTP (you need to implement this part)
     const otp = Math.floor(Math.random() * 9000) + 1000;
-    const user=Educator_info.findOneAndUpdate({email:email})
+    const user=await Educator_info.find({email:email});
+    
 
 
     // Send email with OTP
@@ -26,6 +27,13 @@ exports.OtpController=async (req, res) => {
         subject: subject,
         text: `Your OTP is: ${otp}` // Replace with the actual OTP
     };
+    if(subject==="verify your email" && user.length>0 ){
+        
+        return res.send({
+            success:false,
+            message:"User already exist"
+        })
+    }
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
@@ -34,7 +42,7 @@ exports.OtpController=async (req, res) => {
         }
         else {
             console.log('Email sent:', info.response);
-            return res.send({ success: true, message: 'OTP sent successfully',data:otp });
+            return res.send({ success: true, message: 'OTP sent successfully',data:otp ,info:"check",subject:subject});
         }
     });
 }

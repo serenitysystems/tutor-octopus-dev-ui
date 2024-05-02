@@ -7,15 +7,18 @@ const BatchList = () => {
     const newset = Array.from(
       new Set(JSON.parse(sessionStorage.getItem("batch")))
     );
-    setBatch(newset);
-  }, [batch]);
+    if (newset.length > 0) {
+      setBatch(newset);
+    }
+  }, []); // empty dependency array to run only once on mount
 
   return (
     <>
       {batch.map((item) => (
-        <option value={item}>{item}</option>
+        <option key={item} value={item}>{item}</option>
       ))}
     </>
   );
 };
+
 export default BatchList;

@@ -55,7 +55,7 @@ const Signup = () => {
   // };
   const [isChecked, setIsChecked] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [otprelease, setotprelease] = useState();
+  const [otprelease, setotprelease] = useState(0);
 
   const handleCheckboxChange = (e) => {
     setIsChecked(e.target.checked);
@@ -70,6 +70,7 @@ const Signup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setOtp(null);
     // const verified=false;
     const otpsent = 0;
     setFormErrors(validate(data));
@@ -85,6 +86,13 @@ const Signup = () => {
       });
       if (response.success === true) {
         setotprelease(response.data);
+        // console.log(otprelease);
+      }
+      if(response.success===false){
+        toast.info(response.message);
+        setotprelease(0)
+        setOtpModalOpen(false);
+        return;
       }
     }
   };
@@ -93,8 +101,8 @@ const Signup = () => {
     // Perform OTP verification here, e.g., calling an API
     // Assuming you have an API function for OTP verification
 
-    console.log(otp);
-    console.log(otprelease);
+    // console.log(otp);
+    // console.log(otprelease);
     if (otp == otprelease) {
       console.log("check-99");
       setloading(true);
@@ -107,6 +115,9 @@ const Signup = () => {
         if (response.success === false) {
           setIsSubmit(false);
           toast.error(response.message);
+
+          setotprelease(0);
+          setOtpModalOpen(false)
         } else if (response.success === true) {
           //console.log(response);
           toast.success(response.message);
@@ -118,7 +129,7 @@ const Signup = () => {
     } else {
       // Handle OTP verification failure, show error message, etc.
       toast.error("Invalid OTP. Please try again.");
-      setOtp();
+      setOtp(null);
     }
   };
 
@@ -154,7 +165,7 @@ const Signup = () => {
   const validate = (values) => {
     const errors = {};
     const regex1 = /^[a-zA-Z ]*$/;
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const regex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
     if (!values.firstName) {
       errors.firstName = "**firstName is required**";
     } else if (!regex1.test(values.firstName)) {
@@ -197,6 +208,10 @@ const Signup = () => {
     return errors;
   };
 
+  useEffect(()=>{
+    // console.log(otprelease);
+  },[otprelease])
+
   return (
     <div>
       <Header />
@@ -235,6 +250,7 @@ const Signup = () => {
                           placeholder="Enter your first name"
                           value={data.firstName}
                           onChange={handleChange}
+                          readOnly={otprelease.toString().length>1}
                         />
                         <p className="pform">{formErrors.firstName}</p>
                       </Form.Group>
@@ -247,6 +263,7 @@ const Signup = () => {
                           placeholder="Enter your last name"
                           value={data.lastName}
                           onChange={handleChange}
+                          readOnly={otprelease.toString().length>1}
                         />
                         <p className="pform">{formErrors.lastName}</p>
                       </Form.Group>
@@ -259,6 +276,7 @@ const Signup = () => {
                           placeholder="Enter your Email Address"
                           value={data.email}
                           onChange={handleChange}
+                          readOnly={otprelease.toString().length>1}
                         />
                         <p className="pform">{formErrors.email}</p>
                       </Form.Group>
@@ -292,6 +310,7 @@ const Signup = () => {
                           placeholder="Enter your business name "
                           value={data.businessName}
                           onChange={handleChange}
+                          readOnly={otprelease.toString().length>1}
                         />
                         <p className="pform">{formErrors.businessName}</p>
                       </Form.Group>
@@ -302,6 +321,7 @@ const Signup = () => {
                         onChange={handleChange}
                         value={data.businessType}
                         name="businessType" // Add name attribute to ensure handleChange updates the correct field
+                        readOnly={otprelease.toString().length>1}
                       >
                         <option disabled value="">
                           Enter your business type
@@ -421,7 +441,7 @@ const Signup = () => {
       </div>
 
       <Modal show={otpModalOpen} onHide={() => setOtpModalOpen(false)}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Verify Your Email</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -438,9 +458,9 @@ const Signup = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setOtpModalOpen(false)}>
+          {/* <Button variant="secondary" onClick={() => setOtpModalOpen(false)}>
             Close
-          </Button>
+          </Button> */}
           <Button variant="primary" onClick={handleOtpVerification}>
             Verify OTP
           </Button>
@@ -457,7 +477,7 @@ export default Signup;
 
 // const isValidEmail=(email)=>{
 
-//   const regex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
+//  
 
 //   const a = regex.test(email)
 

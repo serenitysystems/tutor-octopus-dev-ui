@@ -129,8 +129,8 @@ const AddNewStudent = () => {
   const validate = (values) => {
     const errors = {};
     const regex1 = /^[a-zA-Z ]*$/;
-    const regex2 = /^[a-zA-Z ]*$/;
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const regex2 = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
+     const regex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
     // const regexParent = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
 

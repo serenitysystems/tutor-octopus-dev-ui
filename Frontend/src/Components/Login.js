@@ -7,14 +7,22 @@ import { toast } from 'react-toastify';
 import { Link, json, useLocation, useNavigate } from 'react-router-dom';
 import { LoginUser } from '../apicalls/User';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6'
+import RoleBased from '../BackendComp/RoleBased'
 
 const Login = ({ onLogin }) => {
 
+
+
+  const [selectedRole, setSelectedRole] = useState("Student");
     const [data, setData] = useState({
         email: "",
-        password: ""
+        password: "",
+        role:selectedRole
     });
     const [loading, setloading] = useState(false);
+    
+
+    
 
     const navigate = useNavigate();
 
@@ -25,6 +33,10 @@ const Login = ({ onLogin }) => {
             ...prevData,
             [name]: value
         }));
+    };
+
+    const handleRoleChange = (role) => {
+      setSelectedRole(role);
     };
 
 
@@ -90,7 +102,8 @@ const Login = ({ onLogin }) => {
       <div>
         <Header />
         <div className="new-wrapper">
-          <h1 className="Signup1">Sign in as a Tutor</h1>
+          {/* <h1 className="Signup1">Sign in as a Tutor</h1> */}
+          <h1 className="Signup1">Sign in</h1>
           <p className="lets">Lets Start the Journey </p>
           <section
             id="advertisers"
@@ -109,6 +122,7 @@ const Login = ({ onLogin }) => {
                   <div class="service-card2">
                     <Card className="card576">
                       <h1 className="Signup2">Let’s get started!</h1>
+                      <h6 >Choose User-type and add credentials</h6>
                       {loading ? (
                         <div class="spinner-border" role="status">
                           <span class="sr-only"></span>
@@ -116,6 +130,7 @@ const Login = ({ onLogin }) => {
                       ) : (
                         <>
                           <Form className="form9180" onSubmit={handleSubmit}>
+                            <RoleBased onRoleChange={handleRoleChange} />
                             <Form.Group
                               className="mb-4"
                               controlId="formBasicEmail"

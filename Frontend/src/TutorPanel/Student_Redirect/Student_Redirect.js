@@ -1,5 +1,6 @@
 
 import { Link, useLocation } from 'react-router-dom'
+import useState from 'react'
 import { Button, Container, Form, Navbar, Stack } from 'react-bootstrap'
 import { CiShare2 } from 'react-icons/ci'
 import { IoIosNotificationsOutline } from 'react-icons/io'
@@ -8,11 +9,12 @@ import { GoPencil } from "react-icons/go";
 import MobilemenuNavbar from '../SideNavbar/MobilemenuNavbar'
 import Sidenavbar from '../SideNavbar/Sidenavbar'
 import TopBar from '../SideNavbar/TopBar'
+// import LogoutModal from '../../BackendComp/LogoutModal'
 const Student_Redirect = ({userData}) => {
     
     let profilename=sessionStorage.getItem('firstName')+" "+sessionStorage.getItem('lastName');
     let profileimg=sessionStorage.getItem('firstName').charAt(0)+sessionStorage.getItem('lastName').charAt(0);
-
+    // const [LogoutModalbutton,setLogoutModalbutton]=useState(false);
 
     return (
         <div>
@@ -38,6 +40,7 @@ const Student_Redirect = ({userData}) => {
                                         <p className="card-content4 text-center">{userData.user}</p>
 
                                        <Link to='/Login'> <Button  className='logoutbutton'>Log out of all devices</Button></Link>
+                                        {/* <Button onClick={()=>setLogoutModal(true)}  className='logoutbutton'>Log out of all devices</Button> */}
                                         <Button className='logoutbutton1'>Change Password</Button>
                                     </div>
                                     <div className="card4cardf">
@@ -66,7 +69,7 @@ const Student_Redirect = ({userData}) => {
                                                 </Form.Group></div>
                                             </Stack>
                                         </Form>
-
+                                    
 
 
 

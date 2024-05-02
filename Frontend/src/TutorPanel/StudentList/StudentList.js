@@ -60,7 +60,8 @@ const StudentList = ({ userData }) => {
     const [emaildata, setEmailData] = useState({
         email: ""
     });
-    const [batch, setBatch] = useState([]);
+    // const [batch, setBatch] = useState([]);
+      let batch=[];
 
     // Filter and search logic
     const filteredData = data.filter((value) =>
@@ -150,11 +151,14 @@ const StudentList = ({ userData }) => {
     };
     
 
-    useEffect(()=>{
-        const newset = Array.from(new Set(JSON.parse(sessionStorage.getItem('batch'))));
-        setBatch(newset);       
-
-    },[batch])
+    useEffect(() => {
+      const newset = Array.from(
+        new Set(JSON.parse(sessionStorage.getItem("batch")))
+      );
+      batch=newset;
+      // setBatch(newset);
+    }, []); // empty dependency array to run only once on mount
+    
 
 
     const getStudent = async () => {
