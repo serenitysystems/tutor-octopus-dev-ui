@@ -103,7 +103,7 @@ const Login = ({ onLogin }) => {
         <Header />
         <div className="new-wrapper">
           {/* <h1 className="Signup1">Sign in as a Tutor</h1> */}
-          <h1 className="Signup1">Sign in</h1>
+          <h1 className="Signup1">Sign in as a {selectedRole}</h1>
           <p className="lets">Lets Start the Journey </p>
           <section
             id="advertisers"
@@ -122,7 +122,7 @@ const Login = ({ onLogin }) => {
                   <div class="service-card2">
                     <Card className="card576">
                       <h1 className="Signup2">Let’s get started!</h1>
-                      <h6 >Choose User-type and add credentials</h6>
+                      {/* <h6 >Choose User-type and add credentials</h6> */}
                       {loading ? (
                         <div class="spinner-border" role="status">
                           <span class="sr-only"></span>

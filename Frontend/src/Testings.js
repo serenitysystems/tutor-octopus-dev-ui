@@ -26,7 +26,7 @@ function Testings() {
           (uri) => {
             console.log(uri)
             axios.post(
-              'http://localhost:3000/cloudinary/uploadimages', // Include protocol (http://)
+              'http://localhost:3001/cloudinary/uploadimages', // Include protocol (http://)
               { image: uri }
             );
            

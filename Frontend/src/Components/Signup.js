@@ -19,6 +19,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { OtpUser, RegisterUser } from "../apicalls/User";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import Lazyloading from "../BackendComp/Lazy";
+import RoleBased from "../BackendComp/RoleBased";
 
 const Signup = () => {
   // const initialValues = { firstName: "", email: "", password: "" };
@@ -44,6 +45,7 @@ const Signup = () => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [otp, setOtp] = useState();
   const [otpModalOpen, setOtpModalOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState("Student");
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
@@ -74,19 +76,22 @@ const Signup = () => {
     // const verified=false;
     const otpsent = 0;
     setFormErrors(validate(data));
+    console.log(Object.keys(formErrors).length === 0)
     if (Object.keys(formErrors).length === 0) {
       if (!isChecked) {
         setShowModal(true);
         return;
       }
-      setOtpModalOpen(true);
+      setloading(true);
       const response = await OtpUser({
         email: data.email,
         subject: "verify your email",
       });
       if (response.success === true) {
+        setOtpModalOpen(true)
         setotprelease(response.data);
         // console.log(otprelease);
+        setloading(false)
       }
       if(response.success===false){
         toast.info(response.message);
@@ -94,6 +99,12 @@ const Signup = () => {
         setOtpModalOpen(false);
         return;
       }
+    }
+    else{
+     // console.log(formErrors)
+      setOtpModalOpen(false);
+      return;
+
     }
   };
 
@@ -155,13 +166,11 @@ const Signup = () => {
 
   //     };
   // }
+  const handleRoleChange = (role) => {
+    setSelectedRole(role);
+  };
 
-  useEffect(() => {
-    console.log(formErrors);
-    if (Object.keys(formErrors).length === 0) {
-      return;
-    }
-  }, [formErrors]);
+ 
   const validate = (values) => {
     const errors = {};
     const regex1 = /^[a-zA-Z ]*$/;
@@ -212,12 +221,25 @@ const Signup = () => {
     // console.log(otprelease);
   },[otprelease])
 
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0) {
+      return;
+    }
+    else{
+      setOtpModalOpen(false)
+    }
+  }, [formErrors]);
+
+
+
+
   return (
     <div>
       <Header />
       <div className="new-wrapper">
         <h1 className="Signup1" id="SignIn">
-          Sign in as a Tutor
+          Sign in as {selectedRole}
         </h1>
         <p className="lets">Lets Start the Journey </p>
         <section
@@ -242,6 +264,15 @@ const Signup = () => {
                                         ) : ( */}
 
                     <Form className="form9180" onSubmit={handleSubmit}>
+
+                    <Form.Group className="mb-4" controlId="formBasicname">
+                      {/* <center><h6>Select Your Role</h6></center> */}
+                      
+                             <RoleBased onRoleChange={handleRoleChange} />
+                      
+                     
+                      </Form.Group>
+
                       <Form.Group className="mb-4" controlId="formBasicname">
                         <Form.Control
                           className=" FormControl3"
@@ -289,6 +320,7 @@ const Signup = () => {
                             placeholder="Pick a password"
                             value={data.password}
                             onChange={handleChange}
+                            readOnly={otprelease.toString().length>1}
                           />
                           <button
                             type="button"
@@ -302,7 +334,10 @@ const Signup = () => {
                         </div>
                         <p className="pform">{formErrors.password}</p>
                       </Form.Group>
-                      <Form.Group className="mb-4" controlId="formBasicname">
+                      {
+                        (selectedRole === "Private Teacher" || selectedRole === "Coaching institute")  &&
+                        <>
+                         <Form.Group className="mb-4" controlId="formBasicname">
                         <Form.Control
                           className=" FormControl3"
                           type="text"
@@ -335,7 +370,15 @@ const Signup = () => {
                         </option>{" "}
                         {/* Removed extra space after "Center" */}
                       </Form.Select>
+                        
+                        
+                        </>
+                       
 
+
+
+                      }
+                     
                       <p className="pform">{formErrors.businessType}</p>
                       <Row className="my-3">
                         <Col sm={1}>
@@ -397,10 +440,10 @@ const Signup = () => {
                       </Button>
                     </Form>
 
-                    {/* 
-                                        )
+                  
+                                        {/* ) */}
 
-                                        } */}
+                                       
                   </Card>
                   <br></br> <br></br> <br></br>
                 </div>

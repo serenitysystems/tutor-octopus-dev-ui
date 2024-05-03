@@ -101,7 +101,7 @@ const Header = () => {
                       Contact Us{" "}
                     </a>
                   </Nav>
-                  <div className="d-flex">
+                  <div className="d-flex gap-2">
                     <div class="search-box">
                       <button class="btn-search">
                         <i class="fas fa-search"></i>
@@ -123,7 +123,19 @@ const Header = () => {
                         <Button className="signup1"> Back to Home</Button>
                       </Link>
                     )}
-                    &nbsp;&nbsp;&nbsp;
+                     {location === "/signup" ? (
+                       <Link
+                       className="navlink200"
+                       to="/Login"
+                       style={{ color: "black" }}
+                     >
+                       <Button className="signup1"> Login</Button>
+                     </Link>
+                      
+                    ) : (
+                     ""
+                    )}
+                    
                     {/* <Link   className="navlink200 signup1" to="/Login" > Sign In</Link>  */}
                     <Link
                       className="navlink200 "
@@ -131,6 +143,7 @@ const Header = () => {
                       to="/Login"
                       target="_blank"
                     >
+                      
                       <Button
                         style={
                           location === "/signup" || location === "/Login"
@@ -142,6 +155,7 @@ const Header = () => {
                         Sign In
                       </Button>
                     </Link>
+                    
                   </div>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
