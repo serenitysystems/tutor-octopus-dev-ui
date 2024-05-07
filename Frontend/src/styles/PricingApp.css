@@ -8,7 +8,6 @@
 } */
 
 .PricingApp {
-
   min-height: 100vh;
   min-height: 100dvh;
   font-family: "Montserrat", sans-serif;
@@ -16,11 +15,7 @@
   font-size: var(--primary-fs);
   display: grid;
   place-items: center;
-
-
-
 }
-
 
 button {
   font-family: "Montserrat", sans-serif;
@@ -73,7 +68,7 @@ button {
   transition: 0.3s ease;
 }
 
-.PricingApp .price-checkbox:checked+.switch-slider::before {
+.PricingApp .price-checkbox:checked + .switch-slider::before {
   transform: translateX(0%);
 }
 
@@ -88,14 +83,13 @@ button {
   color: var(--neutral-dark-grayish-blue);
 }
 
-.PricingApp header>.header-row {
-  margin-top:10px;
+.PricingApp header > .header-row {
+  margin-top: 10px;
   font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2em;
-  
 }
 
 .PricingApp .pricing-cards {

@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 
-function Description({onSubjectChange,onDescriptionChange}) {
-  const [inputValue, setInputValue] = useState('');
-  const [textareaValue, setTextareaValue] = useState('');
+function Description({ handleQuizChange, quizData }) {
+  console.log(quizData, "description");
+  // const [inputValue, setInputValue] = useState("");
+  // const [textareaValue, setTextareaValue] = useState("");
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-    onSubjectChange(inputValue)
+  // const handleInputChange = (e) => {
+  //   setInputValue(e.target.value);
+  //   onSubjectChange(inputValue);
+  // };
 
-  };
-
-  const handleTextareaChange = (e) => {
-    setTextareaValue(e.target.value);
-    onDescriptionChange(textareaValue);
-  };
+  // const handleTextareaChange = (e) => {
+  //   setTextareaValue(e.target.value);
+  //   onDescriptionChange(textareaValue);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here
-    console.log('Input value:', inputValue);
-    console.log('Textarea value:', textareaValue);
+    // console.log("Input value:", inputValue);
+    // console.log("Textarea value:", textareaValue);
     // You can perform further actions like sending the data to a server
   };
 
@@ -30,8 +30,9 @@ function Description({onSubjectChange,onDescriptionChange}) {
         <Form.Label>Subject</Form.Label>
         <Form.Control
           type="text"
-          value={inputValue}
-          onChange={handleInputChange}
+          value={quizData?.subject || ""}
+          // onChange={handleInputChange}
+          onChange={(e) => handleQuizChange(e.target.value, "subject")}
         />
       </Form.Group>
       <Form.Group controlId="textareaField">
@@ -39,11 +40,11 @@ function Description({onSubjectChange,onDescriptionChange}) {
         <Form.Control
           as="textarea"
           rows={3}
-          value={textareaValue}
-          onChange={handleTextareaChange}
+          value={quizData?.description || ""}
+          onChange={(e) => handleQuizChange(e.target.value, "description")}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" className="mt-4">
         Submit
       </Button>
     </Form>

@@ -33,3 +33,36 @@ exports.questionAdd=async (req ,res) => {
    
 
 }
+
+
+
+exports.quizDetails=async (req, res) => {
+    try {
+      // Extract quiz details from the request body
+      const { name, batch, date, subject, description, userId } = req.body;
+  
+      // Create a new quiz object
+      const quiz = new Quiz({
+        name,
+        batch,
+        date,
+        subject,
+        description,
+        questions,
+        userId
+      });
+  
+      // Save the quiz to the database
+      const savedQuiz = await quiz.save();
+  
+      // Send a success response
+      res.status(201).json({
+          success:true,
+          data:savedQuiz,
+          message:"Quiz created!! Add Questions to this Quiz"
+      });
+    } catch (error) {
+      // Send an error response if something goes wrong
+      res.status(500).json({ error: error.message });
+    }
+}

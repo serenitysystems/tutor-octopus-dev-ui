@@ -1,14 +1,10 @@
-const { questionAdd } = require('../Controllers/Question');
-const { Question } = require('../Models/Question');
+// Import necessary modules
 const express = require('express');
 const router = express.Router();
-const verifyToken=require('../Middlewares/verifyToken');
+const Quiz = require('../Models/Question');
+const QuizController=require('../Controllers/Question')
+// Route to create a new quiz with questions
+router.post('/create',QuizController.quizDetails);
 
-
-
-
-
-router.post('/teacher/question/add',verifyToken,
-questionAdd
-)
-module.exports=router;
+// Export the router
+module.exports = router;

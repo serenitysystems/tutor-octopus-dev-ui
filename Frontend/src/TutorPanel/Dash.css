@@ -8,9 +8,6 @@
   --line-border-empty: #e0e0e0;
 }
 
-
-
-
 .progress-container {
   display: flex;
   justify-content: space-between;
@@ -20,23 +17,17 @@
   width: 85%;
   position: relative;
   margin-top: 30px;
-
-
-
 }
 
 .bnnbcon {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   /* margin-left:60px ; */
-
-
-
 }
 
 .progress-container::before {
   content: "";
-  background-color: #1177FE;
+  background-color: #1177fe;
   position: absolute;
   top: 41%;
   left: 30px;
@@ -47,7 +38,7 @@
 }
 
 .progress {
-  background-color: #1177FE;
+  background-color: #1177fe;
   position: absolute;
   top: 5%;
   left: 0;
@@ -56,7 +47,7 @@
   transform: translateY(-0%);
   z-index: -1;
 
-  transition: .4s ease;
+  transition: 0.4s ease;
 }
 
 .circle {
@@ -73,12 +64,8 @@
   align-items: center;
   justify-content: center;
   border: 3px solid rgba(17, 120, 254, 0);
-  transition: .4s ease;
+  transition: 0.4s ease;
 }
-
-
-
-
 
 .circle1 {
   background-color: white;
@@ -96,14 +83,12 @@
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(17, 120, 254, 0);
-  transition: .4s ease;
+  transition: 0.4s ease;
 }
 
 .circle1.active {
   border-color: rgba(17, 120, 254, 0);
 }
-
-
 
 .sec-icon {
   position: relative;
@@ -140,7 +125,6 @@
   padding: 40px 0px 10px 0px;
   border-radius: 10px;
   height: 280px;
-
 }
 
 .bkkcon {
@@ -154,7 +138,6 @@
   width: 29%;
   background-color: #ff9f0a;
   border-radius: 50px;
-
 }
 
 .imhhg1 {
@@ -164,7 +147,7 @@
   width: 29%;
 
   border-radius: 50px;
-  background: linear-gradient(160.3deg, #A620D1 9.17%, #55106B 142.81%);
+  background: linear-gradient(160.3deg, #a620d1 9.17%, #55106b 142.81%);
 }
 
 .imhhg2 {
@@ -174,8 +157,11 @@
   width: 29%;
 
   border-radius: 50px;
-  background: linear-gradient(154.38deg, #5878AE 16.2%, rgba(86, 86, 86, 0.9) 148.13%);
-
+  background: linear-gradient(
+    154.38deg,
+    #5878ae 16.2%,
+    rgba(86, 86, 86, 0.9) 148.13%
+  );
 }
 
 .imhhg3 {
@@ -185,8 +171,7 @@
   width: 29%;
 
   border-radius: 50px;
-  background: linear-gradient(168.42deg, #00A194 8.5%, #003B36 242.57%);
-
+  background: linear-gradient(168.42deg, #00a194 8.5%, #003b36 242.57%);
 }
 
 .calender5 {
@@ -197,7 +182,6 @@
   background-color: #9923ba;
   border-radius: 100%;
   margin-top: 40px;
-
 }
 
 .create5 {
@@ -206,11 +190,8 @@
 }
 
 @media (max-width: 480px) {
-
   .navbar-collapse {
-
     background-color: #ffffff00 !important;
-
   }
 
   nav.navbar.navbar-expand-lg.navbar-light.bg-light.debhh {
@@ -240,7 +221,7 @@
     z-index: -1;
   }
 
-  .row-cols-2>* {
+  .row-cols-2 > * {
     flex: 0 0 auto;
     width: 100%;
   }
@@ -264,13 +245,12 @@
     margin-top: 40px;
   }
 
-
-img.circle.nn {
-  padding: 5px;
-  height: 75px !important;
-  width: 85% !important;
-  margin: 5px 0px 8px 0px !important;
-}
+  img.circle.nn {
+    padding: 5px;
+    height: 75px !important;
+    width: 85% !important;
+    margin: 5px 0px 8px 0px !important;
+  }
 
   .circle1,
   .circle {
@@ -285,7 +265,7 @@ img.circle.nn {
     align-items: center;
     justify-content: center;
     border: 3px solid rgba(17, 120, 254, 0);
-    transition: .4s ease;
+    transition: 0.4s ease;
   }
 
   .share1 {
@@ -324,7 +304,6 @@ img.circle.nn {
 
   .share2 {
     font-size: 30px !important;
-
   }
 
   .share3 {
@@ -363,15 +342,11 @@ img.circle.nn {
     font-weight: 500 !important;
     color: black;
     font-size: 14px;
-}
-
+  }
 }
 
 .progress-container::before {
-
-
   height: 4px;
-
 }
 .create5 {
   margin-left: 10px;
@@ -388,7 +363,6 @@ img.circle.nn {
     padding: 0px 50px 0px 50px;
   }
 
-
   .share3 {
     font-size: 0px;
     padding: 4px;
@@ -403,9 +377,7 @@ img.circle.nn {
     border-radius: 10px;
     height: 350px;
     margin: 0px 0px 20px 0px !important;
-
   }
-
 
   .dropdown-toggle::after {
     font-size: 30px !important;
@@ -415,9 +387,7 @@ img.circle.nn {
   }
 
   .navbar-collapse {
-
     background-color: #ffffff00 !important;
-
   }
 
   nav.navbar.navbar-expand-lg.navbar-light.bg-light.debhh {
@@ -447,11 +417,10 @@ img.circle.nn {
     z-index: -1;
   }
 
-  .row-cols-2>* {
+  .row-cols-2 > * {
     flex: 0 0 auto;
     width: 100%;
   }
-
 
   .calender5 {
     margin-left: auto;
@@ -466,10 +435,8 @@ img.circle.nn {
   img.circle.nn {
     padding: 5px;
     height: 85px;
-    margin: 5px 0px 0px 0px ;
+    margin: 5px 0px 0px 0px;
   }
-
-
 
   .circle1,
   .circle {
@@ -483,7 +450,7 @@ img.circle.nn {
     align-items: center;
     justify-content: center;
     border: 3px solid rgba(17, 120, 254, 0);
-    transition: .4s ease;
+    transition: 0.4s ease;
   }
 
   .share1 {
@@ -515,7 +482,6 @@ img.circle.nn {
     padding: 10px 0px 10px 0px;
   }
 
-
   .share3 {
     font-size: 0px;
     padding: 4px;
@@ -534,5 +500,4 @@ img.circle.nn {
     flex: 0 0 auto;
     width: 100%;
   }
-
 }

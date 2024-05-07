@@ -23,10 +23,10 @@ function Testings() {
           "JPEG",
           100,
           0,
-          (uri) => {
+          async (uri) => {
             console.log(uri)
-            axios.post(
-              'http://localhost:3001/cloudinary/uploadimages', // Include protocol (http://)
+            await axios.post(
+              'http://localhost:9000/cloudinary/uploadimages', // Include protocol (http://)
               { image: uri }
             );
            
