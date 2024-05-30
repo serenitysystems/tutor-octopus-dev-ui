@@ -1,0 +1,72 @@
+button#fill-tab-example-tab-session-1,
+button#fill-tab-example-tab-session-2,
+button#fill-tab-example-tab-session-3,
+button#fill-tab-example-tab-session-4{
+    border-radius: 0px !important;
+    color: black !important;
+    border: 1px solid rgb(0, 0, 0) !important;
+
+}
+
+button#fill-tab-example-tab-session-1.active,
+button#fill-tab-example-tab-session-2.active,
+button#fill-tab-example-tab-session-3.active,
+button#fill-tab-example-tab-session-4.active{
+    background-color: #1177FE !important;
+    border: none !important;
+    color: white !important;
+
+}
+button#fill-tab-example-tab-session-1:hover,
+button#fill-tab-example-tab-session-2:hover,
+button#fill-tab-example-tab-session-3:hover,
+button#fill-tab-example-tab-session-4:hover{
+    /* background-color: #1178fe24 !important;
+    border: none !important; */
+    color: white !important;
+
+}
+.addnewcard899bbb{
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+    border-radius: 20px;
+    padding: 30px ;
+}
+.thy{
+    border: none !important;
+  
+}
+.session5{
+    border-radius: 0px !important;
+    color: black !important;
+
+}
+.aboutinsnbh{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 30px;
+    padding: 8px 50px ;
+}
+.startg{
+    background-color: white;
+    color: black;
+    padding: 8px 50px;
+    border: none;
+}
+.cardtt{
+    background-color: #D283EA;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+    border-radius: 20px;
+    padding: 30px 30px 30px 30px;
+}
+.cardtt1{
+    background-color: 
+    #44BBB1;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+    border-radius: 20px;
+    padding: 30px 30px 30px 30px;
+}

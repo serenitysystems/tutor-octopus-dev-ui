@@ -45,4 +45,26 @@ exports.OtpController=async (req, res) => {
             return res.send({ success: true, message: 'OTP sent successfully',data:otp ,info:"check",subject:subject});
         }
     });
+};
+
+
+exports.confirmationMail=async(email)=>{
+    const mailOptions = {
+        from: 'pankajsoni93444@gmail.com',
+        to: email,
+        subject: "Welcome to Tutor Octupus",
+        text: `Welcome message!!! 
+        You can login here->https://tutor-octupus-office.vercel.app/Login` // Replace with the actual OTP
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error:', error);
+            return res.status(500).json({ success: false, message: 'Failed to send OTP' });
+        }
+        else {
+            console.log('Email sent:', info.response);
+            return res.send({ success: true, message: ''});
+        }
+    });
 }

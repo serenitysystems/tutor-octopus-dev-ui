@@ -1,6 +1,8 @@
 /* Common styles for both tabs */
 button#controlled-tab-example-tab-home,
-button#controlled-tab-example-tab-batch {
+button#controlled-tab-example-tab-batch,
+button#controlled-tab-example-tab-match,
+button#controlled-tab-example-tab-result {
   border: none;
   color: rgba(17, 119, 254, 1);
   font-size: 19px;
@@ -13,13 +15,17 @@ button#controlled-tab-example-tab-batch {
 
 /* Styles for active tab */
 button#controlled-tab-example-tab-home[aria-selected="true"],
-button#controlled-tab-example-tab-batch[aria-selected="true"] {
+button#controlled-tab-example-tab-batch[aria-selected="true"],
+button#controlled-tab-example-tab-match[aria-selected="true"],
+button#controlled-tab-example-tab-result[aria-selected="true"] {
   border-bottom-color: rgba(17, 119, 254, 1); /* Set border color to blue when active */
 }
 
 /* Styles for when the tab is hovered */
 button#controlled-tab-example-tab-home:hover,
-button#controlled-tab-example-tab-batch:hover {
+button#controlled-tab-example-tab-batch:hover
+button#controlled-tab-example-tab-match:hover
+button#controlled-tab-example-tab-result:hover {
   border-bottom-color: rgba(17, 119, 254, 1); /* Set border color to blue when hovered */
   color: rgb(157, 184, 219);
 }

@@ -1,0 +1,338 @@
+.cardabout8 {
+    background-color: #fff8f8;
+    padding: 170px 0px 90px 0px;
+    margin-bottom: -90px !important;
+
+}
+
+.cardabout6 {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+    padding: 50px 50px 100px 50px;
+}
+
+.aboutins {
+    width: 80%;
+    margin-top: -50px;
+}
+
+
+.carousels174 {
+    background-color:
+        #6dc6fe73;
+    box-shadow: rgba(100, 100, 111, 0.029) 0px 7px 29px 0px;
+    padding: 30px 0px 30px 0px;
+    height: 240px;
+    border-radius: 10px;
+    margin: 10px;
+
+}
+
+.carousels2174 {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius:100%;
+    width:38%;
+    /* height: 40%; */
+    margin-top: -110px;
+    background-color: #bde5ff;
+    padding: 5px 0px 5px 0px;
+ 
+
+
+
+}
+
+
+.react-multiple-carousel__arrow--left::before {
+    content: "\e824";
+
+}
+
+.react-multiple-carousel__arrow--right {
+    right: calc(1% + 0px);
+
+}
+
+.react-multiple-carousel__arrow--left {
+    left: calc(1% + 0px);
+}
+
+.react-multi-carousel-list {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    position: inherit;
+}
+
+.iomdaddh {
+    margin-bottom: 0px;
+    font-size: 40px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(143, 143, 143);
+    display: block;
+    background-color: transparent;
+    border: none;
+}
+
+.iomdaddh:hover {
+    margin-bottom: 0px;
+    font-size: 40px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(143, 143, 143);
+    display: block;
+    background-color: transparent !important;
+    border: none;
+}
+
+.text674 {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0px 0px 0px;
+}
+
+.slide574 {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 40%;
+
+}
+
+.text774 {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: black;
+
+}
+
+.testghh {
+    background-color: #bde5ffc8;
+    border: none;
+}
+
+.testghh:focus {
+    background-color: #bde5ffc8;
+    border: none;
+}
+
+@media (max-width: 480px) {
+
+    .aboutins {
+        width: 100% !important;
+
+        margin: 0px 0px 30px 0px !important;
+    }
+
+    .cardabout6 {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border: none;
+        padding: 50px 10px 100px 10px;
+    }
+
+    .iomdaddh {
+        margin-bottom: 0px;
+        font-size: 40px;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        color: rgb(143, 143, 143);
+        display: block;
+        background-color: transparent;
+        border: none;
+    }
+
+    .iomdaddh:hover {
+        margin-bottom: 0px;
+        font-size: 40px;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        color: rgb(143, 143, 143);
+        display: block;
+        background-color: transparent !important;
+        border: none;
+    }
+
+    .carousels174 {
+        background-color: #ffffff;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 30px 0px 30px 0px;
+        height: 250px !important;
+        border-radius: 10px;
+        margin: 0px !important;
+        max-width: 100% !important;
+
+    }
+
+
+    .carousels274 {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 100%;
+        width: 100% !important;
+    }
+
+    .slide574 {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 40% !important;
+    }
+
+    .carousels2174 {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 100%;
+        width: 38% !important;
+        margin-top: -100px;
+        background-color: #bde5ff !important;
+        padding: 5px 0px 5px 0px;
+
+    }
+
+    .react-multiple-carousel__arrow--left::before {
+        content: "\e824";
+
+    }
+
+    .react-multiple-carousel__arrow--right {
+        right: calc(1% + 0px);
+
+    }
+
+    .react-multiple-carousel__arrow--left {
+        left: calc(1% + 0px);
+    }
+
+    .react-multi-carousel-list {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        position: inherit;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .cardabout6 {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border: none;
+        padding: 50px 10px 100px 10px;
+    }
+
+    .iomdaddh {
+        margin-bottom: 0px;
+        font-size: 40px;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        color: rgb(143, 143, 143);
+        display: block;
+        background-color: transparent;
+        border: none;
+    }
+
+    .iomdaddh:hover {
+        margin-bottom: 0px;
+        font-size: 40px;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        color: rgb(143, 143, 143);
+        display: block;
+        background-color: transparent !important;
+        border: none;
+    }
+
+    .carousels2174 {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 100%;
+        width: 38%;
+        margin-top: -100px;
+        background-color: #bde5ff;
+        padding: 5px 0px 5px 0px;
+    }
+
+    .carousels174 {
+        /* background-color: #ffffff; */
+        background-color: #bde5ff;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 30px 0px 30px 0px;
+        height: 300px;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 90%;
+
+    }
+
+
+    .carousels274 {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 100%;
+        width: 20%;
+    }
+
+    .slide574 {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 40% !important;
+    }
+
+    .aboutins {
+        width: 100% !important;
+
+        margin: 0px 0px 30px 0px !important;
+    }
+
+
+
+
+    /* .carousels1 {
+        background-color: #ffffff;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 30px 0px 30px 0px;
+        height: 300px;
+        border-radius: 10px;
+        width: 260px !important;
+    } */
+    /* .carousels274 {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 100%;
+        width: 40%;
+    }
+    .slide574 {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 20%;
+    }
+    
+   
+    
+    .slick-prev {
+        left: -32px !important;
+    }
+     */
+
+
+
+}

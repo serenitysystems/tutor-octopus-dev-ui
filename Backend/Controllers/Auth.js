@@ -1,8 +1,11 @@
 // Import necessary modules
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {Educator_info} = require('../Models/Educator_info.js'); // Import your Educator_info model
+const {Educator_info} = require('../Models/Educator_info.js');
+const {Student} = require('../Models/Student.js');
+ // Import your Educator_info model
 const nodemailer = require('nodemailer');
+const { confirmationMail } = require('./OTP.js');
 
 // Define the controller function for the login route
 
@@ -18,53 +21,91 @@ exports.loginController = async (req, res) => {
     console.log("helo")
     try {
         // Find the user in the database by email
-        const user = await Educator_info.findOne({ email: req.body.email });
-        console.log()
-        // Retrieve the secret from environment variables
-        const secret = process.env.secret;
-
-        // If the user does not exist, return an error response
-        if (!user) {
+        if(!req.body.role){
             return res.status(200).send({
                 success: false,
-                message: 'Invalid email or password'
+                message: 'Select a role first',
+                navigate:'/Login_Role'
             });
+
         }
-
-        // Securely compare passwords
-        const passwordMatch = bcrypt.compareSync(req.body.password, user.passwordHash);
-
-        // If passwords do not match, return an error response
-        if (!passwordMatch) {
-            return res.status(200).send({
-                success: false,
-                message: 'Invalid email or password'
-            });
-        }
-
-        // If passwords match, generate a JWT token
-        const token = jwt.sign(
+        const secret=process.env.secret
+        if(req.body.role==="Teacher")
             {
-                userId: user._id
-            },
-            secret,
-            { expiresIn: '1h' }
-        );
+                const user = await Educator_info.findOne({ email: req.body.email });
+                if (!user) {
+                    return res.status(200).send({
+                        success: false,
+                        message: 'Invalid email or password',
+                        navigate:'/Home'
+                    });
+                }
+               
+                const secret = process.env.secret;
+                const passwordMatch = bcrypt.compareSync(req.body.password, user.passwordHash);
 
-        // Return a success response with user details and token
-        return res.status(200).send({
-            success: true,
-            message: "Login successful",
-            data: {
-                user: user.email,
-                token: token,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                role: user.businessType,
-                id: user._id,
-                batch:user.batch
+                // If passwords do not match, return an error response
+                if (!passwordMatch) {
+                    return res.status(200).send({
+                        success: false,
+                        message: 'Invalid email or password'
+                    });
+                }
+                const token = jwt.sign(
+                    {
+                        userId: user._id
+                    },
+                    secret,
+                    { expiresIn: '1h' }
+                );
+                return res.status(200).send({
+                    success: true,
+                    message: "Login successful",
+                    data: {
+                        user: user.email,
+                        token: token,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        role: user.businessType,
+                        id: user._id,
+                        batch:user.batch
+                    }
+                });
+        
             }
-        });
+        else if(req.body.role==="Student"){
+            const student = await Student.findOne({ email: req.body.email,mobileNumber:'+91'+req.body.password });
+            if (! student) {
+                return res.status(200).send({
+                    success: false,
+                    message: 'Invalid email or password'
+                });
+            }
+            const token = jwt.sign(
+                {
+                    userId: student._id
+                },
+                secret,
+                { expiresIn: '1h' }
+            );
+            return res.status(200).send({
+                success: true,
+                message: "Login successful",
+                data: {
+                    user: student.email,
+                    // token: token,
+                    firstName: student.firstName,
+                    lastName: student.lastName,
+                    role: "Student",
+                    userId: student._id,
+                    batch:student.batch,
+                    programme:student.lessonCategory,
+                    navigate:'/Student/Home',
+                    token:token
+                }
+            });
+        }
+      
     } catch (error) {
         // If an error occurs during the process, return a server error response
         console.error("Error during login:", error);
@@ -129,11 +170,16 @@ exports.signupController=async (req, res) => {
     //console.log(data);
 
     let user = new Educator_info(data)
+    if(user){
+        await confirmationMail(data.email);
+
+    }
     user = await user.save();
+
 
     // if (!user)
     //     return res.status(400).send('the user cannot be created!')
-
+    
     return res.status(200).send({
         success: true,
         message: "User added successfully",

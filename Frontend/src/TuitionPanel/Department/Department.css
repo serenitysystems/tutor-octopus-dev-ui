@@ -1,0 +1,125 @@
+.main8 {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    width: 100%;
+    display: grid;
+    /* Define Auto Row size */
+    grid-auto-rows: 100px;
+    /*Define our columns */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1em;
+}
+
+.main88 {
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+}
+
+.main88:nth-child(odd) {
+    background-color: #55BBE9;
+}
+
+.main88:nth-child(even) {
+    background-color: #afbe29;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box
+}
+
+.container89 {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1170px;
+}
+
+.form89 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    grid-auto-flow: row;
+    grid-template-areas: ". . bio" ". . bio" ". . .";
+}
+
+
+
+.field89>.input89 {
+    margin-top: 5px;
+}
+
+.input89 {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.inputgroup1{
+    border: none;
+    background-color: #D3EEFF
+    
+}
+.inputgroup1:focus {
+    border: none !important;
+    background-color: #D3EEFF
+    
+}
+
+.inputgroup{
+    border:2px solid #6DC6FE ;
+    border-radius: 5px;
+    background-color: #D3EEFF
+}
+.btngjiu78{
+   
+    display: flex !important;
+}
+.closebtn{
+    margin: 10px;
+    padding: 8px 40px 8px 40px;
+    border-radius: 30px;
+    height: 50px;
+
+}
+.select.input89.inputgroup1.nn.form-select:focus{
+    border: none !important;
+    background-color: #D3EEFF !important;
+}
+.submithbtn{
+    padding: 10px 40px 10px 40px !important;
+    border-radius: 30px;
+    border: 2px solid black;
+    background-color: transparent;
+    color: black;
+    height: 50px;
+    margin: 10px;
+    
+
+
+}Courses
+
+.submithbtn:hover{
+    height: 50px;
+    margin: 10px;
+    padding: 8px 40px 8px 40px;
+    border-radius: 30px;
+ 
+    background-color: #6DC6FE ;
+    color: #000000 ;
+    border:2px solid #6DC6FE ;
+
+
+}
+@media (max-width: 900px) {
+    .form89 {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

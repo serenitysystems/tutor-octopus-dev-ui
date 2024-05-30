@@ -68,7 +68,7 @@ const AddNewStudent = () => {
       setIsSubmit(true);
       setloading(true);
     }
-    if (Object.keys(formErrors).length > 0) {
+    else{
       toast.info('Some of the details entered are incorrect. Scroll and Check');
     }
 
@@ -85,9 +85,10 @@ const AddNewStudent = () => {
           setIsSubmit(false)
           //console.log(response.message)
           setloading(false)
-          if (response.success === false) {
+          if (response.success === false && response.status===502) {
             //  alert(response.message)
-            toast.info(response.message);
+            toast.info("User is not authorized");
+            navigate('/Login')
             setIsSubmit(false)
           }
           else if (response.success === true) {
@@ -101,7 +102,7 @@ const AddNewStudent = () => {
 
             // alert(response.message)
           }
-          else if(response.status===502){
+          else if(response.status===210){
             toast.info('User is not authorized')
             navigate('/login')
           }
@@ -109,7 +110,7 @@ const AddNewStudent = () => {
 
         }
       
-      else {
+       else {
         navigate('/Login')
       }
       console.log(response)
@@ -142,7 +143,7 @@ const AddNewStudent = () => {
 
     if (!values.lastName) {
       errors.lastName = "*Last Name is  required !";
-    } else if (!regex2.test(values.lastName)) {
+    } else if (!regex1.test(values.lastName)) {
       errors.lastName = "Please enter alphabet characters only";
     }
 
@@ -181,7 +182,7 @@ const AddNewStudent = () => {
 
     if (!values.lastNameParent) {
       errors.lastNameParent = "Parent Name is a required !";
-    } else if (!regex2.test(values.lastNameParent)) {
+    } else if (!regex1.test(values.lastNameParent)) {
       errors.lastNameParent = "Please enter alphabet characters only";
     }
 

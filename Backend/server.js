@@ -33,7 +33,6 @@ mongoose.connect(Connection_String).then(()=>{
 app.use(userRouter);
 app.use(studentRouter);
 app.use(calenderRouter);
-app.use(questionRouter);
 app.use('/Quiz',questionRouter);
 
 

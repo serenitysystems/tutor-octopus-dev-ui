@@ -1,0 +1,30 @@
+/* YourCustomStyles.css */
+.word-wrap {
+    word-wrap: break-word;       /* Older versions of CSS */
+    overflow-wrap: break-word;   /* Modern browsers */
+    white-space: normal;         /* Ensure text wraps within cells */
+  }
+
+/* Add padding to table cells */
+.table td, .table th {
+    padding: 0.75rem;
+    vertical-align: middle;
+  }
+  
+  /* Style the list items within the table cells */
+  .table td ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .table td ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Adjust button styling */
+  .table .btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+  

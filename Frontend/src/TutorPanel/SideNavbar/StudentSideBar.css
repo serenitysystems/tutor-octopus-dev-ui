@@ -1,0 +1,17 @@
+/* Add this CSS to your stylesheet */
+@media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+  
+    .toggle-navbar {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .toggle-navbar {
+      display: none;
+    }
+  }
+  

@@ -44,7 +44,7 @@ const Header = () => {
                   </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  <Nav className="justify-content-center flex-grow-1 pe-3 navlink2">
+                  <Nav className="justify-content-center align-items-center flex-grow-1 pe-3 navlink2">
                     <a
                       style={
                         location == "/Login" || location === "/signup"
@@ -126,7 +126,7 @@ const Header = () => {
                      {location === "/signup" ? (
                        <Link
                        className="navlink200"
-                       to="/Login"
+                       to="/Login_Role"
                        style={{ color: "black" }}
                      >
                        <Button className="signup1"> Login</Button>
@@ -140,7 +140,7 @@ const Header = () => {
                     <Link
                       className="navlink200 "
                       style={{ color: "black" }}
-                      to="/Login"
+                      to="/Login_Role"
                       target="_blank"
                     >
                       
@@ -196,7 +196,7 @@ const Header = () => {
                 <Link className="navlink2" to="/">
                   Contact Us{" "}
                 </Link>
-                <Link className="navlink2" to="/Login">
+                <Link className="navlink2" to="/Login_Role">
                   Sign In{" "}
                 </Link>
               </Nav>

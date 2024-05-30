@@ -1,52 +1,82 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { CreateQuiz } from "../../apicalls/Questions";
+import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 
-function Description({ handleQuizChange, quizData }) {
-  console.log(quizData, "description");
-  // const [inputValue, setInputValue] = useState("");
-  // const [textareaValue, setTextareaValue] = useState("");
-
-  // const handleInputChange = (e) => {
-  //   setInputValue(e.target.value);
-  //   onSubjectChange(inputValue);
-  // };
-
-  // const handleTextareaChange = (e) => {
-  //   setTextareaValue(e.target.value);
-  //   onDescriptionChange(textareaValue);
-  // };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    // console.log("Input value:", inputValue);
-    // console.log("Textarea value:", textareaValue);
-    // You can perform further actions like sending the data to a server
+function Description({
+  setInputValue, //subject
+  setTextareaValue, //desc
+  setstartTime, //time
+  register,
+  errors,
+  quizType,
+  setquizType
+}) {
+  const handleChange = (e, field) => {
+    const value = e.target.value;
+    if (field === "subject") {
+      setInputValue(value);
+    } else if (field === "description") {
+      setTextareaValue(value);
+    } else if (field === "time") {
+      setstartTime(value);
+    }
   };
 
+  
+const location=useLocation();
+
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
+      {
+        location.pathname.includes('Practice')===false
+        ||quizType!='Practice' &&
+        <Form.Group controlId="inputField" className="col-md-6">
+        <Form.Label> DeadLine Time</Form.Label>
+        <Form.Control
+          type="time"
+          {...register("time", { required: "This is required" })}
+          // value={startTime}
+          // onChange={(e) => handleChange(e, "time")}
+        />
+        {errors.time && (
+          <Form.Text className="text-danger">{errors.time.message}</Form.Text>
+        )}
+      </Form.Group>
+      }
+
       <Form.Group controlId="inputField">
         <Form.Label>Subject</Form.Label>
         <Form.Control
           type="text"
-          value={quizData?.subject || ""}
-          // onChange={handleInputChange}
-          onChange={(e) => handleQuizChange(e.target.value, "subject")}
+          // value={inputValue}
+          // onChange={(e) => handleChange(e, "subject")}
+
+          {...register("subject", { required: "This is required" })}
         />
+        {errors?.subject && (
+          <Form.Text className="text-danger">
+            {errors?.subject?.message}
+          </Form.Text>
+        )}
       </Form.Group>
       <Form.Group controlId="textareaField">
         <Form.Label>Description</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}
-          value={quizData?.description || ""}
-          onChange={(e) => handleQuizChange(e.target.value, "description")}
+          {...register("description", { required: "This is required" })}
+          // value={textareaValue}
+          // onChange={(e) => handleChange(e, "description")}
         />
+        {errors.description && (
+          <Form.Text className="text-danger">
+            {errors.description.message}
+          </Form.Text>
+        )}
       </Form.Group>
-      <Button variant="primary" type="submit" className="mt-4">
-        Submit
-      </Button>
     </Form>
   );
 }

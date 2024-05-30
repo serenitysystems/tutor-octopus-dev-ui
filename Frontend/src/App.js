@@ -11,7 +11,7 @@ import Home from "./TutorPanel/Home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Student from "./TutorPanel/Student";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Calendar from './TutorPanel/Calendar';
 import AddNewStudent from "./TutorPanel/AddNewStudent";
 import OnlineResources from "./TutorPanel/OnlineResources";
@@ -34,10 +34,38 @@ import PrivacyPolicy from "./Components/TermsOfConditions/PrivacyPolicy";
 import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
 import OTP from "./Components/ForgetPassword/OTP";
 import NewPassword from "./Components/ForgetPassword/NewPassword";
-import Attendance from "./TutorPanel/Attendance/Attendance";
 import QuizMain from "./TutorPanel/Quiz/QuizMain";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import LoginRole from "./Components/Login_Signup_Role";
+import MeritList from "./TutorPanel/ExamFeatures/MeritList";
+import ResultCard from "./TutorPanel/ExamFeatures/ResultCard";
+import StudentHome from "./StudentPanel/StudentHome";
+import TodaySessions from "./StudentPanel/TodaySessions";
+import StudentAssignment from "./StudentPanel/StudentAssignment";
+import StudentQuiz from "./StudentPanel/Quiz/StudentQuiz";
+import QuizCard from "./StudentPanel/Quiz/QuizCard";
+import QuizPlay from "./StudentPanel/Quiz/QuizPlay";
+import Courses from "./TuitionPanel/Courses/Courses";
+import AddCourses from "./TuitionPanel/Courses/AddCourses";
+import Department from "./TuitionPanel/Department/Department";
+import Event_Calendar_Student from "./StudentPanel/Event_Calendar/TimeTable";
+import TodaySession from "./StudentPanel/TodaySession/TodaySession";
+import Attendencelist from "./TutorPanel/StudentList/AttendenceList";
+import Layout from "./Components/Layout";
+import FeeTransactions from "./StudentPanel/FeeTransactions/FeeTransactions";
+import TimeTable from "./StudentPanel/Event_Calendar/TimeTable";
+import AddAllFaculties from "./TuitionPanel/Faculties/AddAllFaculties";
+import QuizRecord from "./TutorPanel/Quiz/QuizRecord";
+import ExamPractice from "./TutorPanel/ExamFeatures/ExamPractice";
+import Exam from "./StudentPanel/Exam/Exam";
+import Examplay from "./StudentPanel/Exam/Examplay";
+
+// Define components for each route
+
+// const Subscription = () => {
+//   return <div>Subscription Page</div>;
+// };
 
 function App() {
   const [userData, setUserData] = useState({
@@ -68,6 +96,7 @@ function App() {
             {/* <Route path='/About' element={<About />} /> */}
             <Route path="/Login" element={<Login onLogin={handleLogin} />} />
             <Route path="/Signup" element={<Signup />} />
+            <Route path="/Login_Role" element={<LoginRole />} />
             {userData && (
               <Route
                 path="/Subscription"
@@ -88,9 +117,18 @@ function App() {
             )}
             {userData && (
               <Route
-                path="/ExamFeatures"
+                path="ExamFeatures"
                 element={<ExamFeatures userData={userData} />}
+              ></Route>
+            )}
+            {userData && (
+              <Route
+                path="/ExamFeatures/result-card/:id"
+                element={<ResultCard userData={userData} />}
               />
+            )}
+            {userData && (
+              <Route path="/ExamFeatures/Merit" element={<MeritList />} />
             )}
             {/* {userData && <Route path='/Quiz' element={<Quiz userData={userData} />} />} */}
             {userData && (
@@ -102,13 +140,37 @@ function App() {
             {userData && (
               <Route path="/Quiz/:id" element={<Quiz userData={userData} />} />
             )}
-
             {userData && (
               <Route
                 path="/Quiz/new-quiz"
                 element={<Quiz userData={userData} />}
               />
             )}
+             {userData && (
+              <Route
+                path="/QuizRecord"
+                element={<QuizRecord userData={userData} />}
+              />
+            )}
+            {/* Exam Features tutor */}
+            {userData && (
+              <Route
+                path="/ExamFeatures/new/:id"
+                 element={<ExamPractice userData={userData} />}
+              />
+            )}
+             {userData && (
+              <Route
+                path="/ExamFeatures/:id"
+                 element={<ExamPractice userData={userData} />}
+              />
+            )}
+
+
+
+
+
+
             {userData && (
               <Route path="/Home" element={<Home userData={userData} />} />
             )}
@@ -136,7 +198,6 @@ function App() {
                 element={<Event_Calendar userData={userData} />}
               />
             )}
-
             {/* <Route path='/TutorHome'  element={<TutorHome />} /> */}
             {userData && (
               <Route
@@ -160,12 +221,17 @@ function App() {
             {userData && (
               <Route
                 path="/Attendence"
-                element={<Attendance userData={userData} />}
+                element={<Attendencelist userData={userData} />}
+              />
+            )}
+            {userData && (
+              <Route
+                path="/StudentList"
+                element={<StudentList userData={userData} />}
               />
             )}
             <Route path="/UploadFiles" element={<UploadFiles />} />
             {<Route path="/TopBar" element={<TopBar />} />}
-
             <Route path="/Testings" element={<Testings />} />
             <Route path="/TermsofService" element={<TermsofService />} />
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
@@ -176,14 +242,54 @@ function App() {
         <topnavbar/>
         <Routes>....</Routes>
         </div> */}
+            {/* HERE WE WILL USE ROUTES RELATED TO BUSINESS TUTOR */}
+            {/* <Route path="/BusinessTutor" element={<BusinessTutor />} /> */}
+            <Route path="/BusinessTutor" element={<AddAllFaculties />} />
 
-            <Route path="/BusinessTutor" element={<BusinessTutor />} />
-            {userData && (
-              <Route
-                path="/StudentList"
-                element={<StudentList userData={userData} />}
-              />
-            )}
+            {/* HERE WE WILL USE ROUTES RELATED TO STUDENT-DASHBOARD */}
+
+            <Route
+              path="/Student/Home"
+              element={
+                //use the layout here.
+                <Layout>
+                  <StudentHome />
+                </Layout>
+              }
+            />
+
+            <Route path="/student/today-sessions" element={ <Layout><TodaySession /></Layout>} />
+            <Route
+              path="/student/fee-transactions"
+              element={ <Layout><FeeTransactions /></Layout>}
+            />
+            <Route path="/student/timetable" element={<Layout><TimeTable /></Layout>} />
+            {/* <Route
+              path="/student/student-attendance"
+              element={<Attendance />}
+            /> */}
+            <Route
+              path="/student/student-exam"
+              element={<Layout><Exam/></Layout>}
+            />
+             <Route
+              path="/student/student-exam/:id"
+              element={<Layout><Examplay/></Layout>}
+            />
+            <Route path="/student/student-quiz" element={<Layout><StudentQuiz /></Layout>} />
+            <Route path="/student/student-quizcard" element={<Layout><QuizCard /></Layout>} />
+            <Route
+              path="/student/:id"
+              element={<Layout><QuizPlay userData={userData} /></Layout>}
+            />
+            <Route
+              path="/student/student-announcement"
+              element={<StudentAssignment />}
+            />
+            <Route
+              path="/student/subscription"
+              element={<Event_Calendar_Student />}
+            />
           </Routes>
         </BrowserRouter>
         <ToastContainer />

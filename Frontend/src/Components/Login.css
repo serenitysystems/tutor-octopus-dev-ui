@@ -57,12 +57,12 @@
     font-size: 14px;
 }
 .ForgetPassword {
-    float: right;
-    color: #F39C3B !important;
     text-decoration: none !important;
     margin: 20px 0px 0px 0px;
-
-
+    text-align: right;
+}
+.ForgetPassword a{
+    color: #F39C3B !important;
 }
 
 .notres {
@@ -84,52 +84,22 @@
 }
 
 .VOIR_LESPRODUITSbn9 {
+    text-align: center;
+}
+
+.VOIR_LESPRODUITSbn9 button{
+    border: none;
+    border-radius: 8px;
+    padding: 8px 50px 8px 50px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.VOIR_LESPRODUITSbn9 button:hover{
     background-color: #052A44;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 50px 8px 50px;
-    margin-top: 70px;
-    margin-bottom: 20px;
 }
 
-.VOIR_LESPRODUITSbn9:hover {
-    background-color: #FF9F0A;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 50px 8px 50px;
-    margin-top: 70px;
-    margin-bottom: 20px;
-}
 
-.VOIR_LESPRODUITSbn99 {
-    background-color: #052A44;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 50px 8px 50px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 
-.VOIR_LESPRODUITSbn99:hover {
-    background-color: #FF9F0A;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 50px 8px 50px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 .eyese {
     display: flex;
     border: 1px solid #dee2e6;

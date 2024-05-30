@@ -2,7 +2,7 @@ const { Student } = require('../Models/Student');
 const express = require('express');
 const router = express.Router();
 const verifyToken=require('../Middlewares/verifyToken');
-const { studentAdd, studentDelete, studentEdit, studentRead } = require('../Controllers/Student');
+const { studentAdd, studentDelete, studentEdit, studentRead, studentOneRead } = require('../Controllers/Student');
 const { studentReadBatch, studentWithoutBatch, studentWithoutBatchAdd } = require('../Controllers/Batch');
 const { studentAttendanceRead, studentAttendanceEdit, readAttendanceRecordButton, readAttendanceRecordAll } = require('../Controllers/Attendance');
 
@@ -43,6 +43,7 @@ router.get('/student/read/AttendenceRecord/AllStudent/RecordButton', readAttenda
 router.get('/student/read/WithoutBatch',studentWithoutBatch);
 router.patch('/student/add/WithoutBatch',studentWithoutBatchAdd);
 router.get('/student/read/Batch',studentReadBatch);
+router.get('/student/read/id',studentOneRead);
 
 
 

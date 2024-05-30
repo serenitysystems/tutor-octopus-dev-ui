@@ -1,0 +1,40 @@
+/* Custom CSS for responsive button font-size */
+
+/* Default font-size for small screens */
+.responsive-btn {
+    font-size: 0.75rem; /* Small font size */
+  }
+  
+  /* Medium screens */
+  @media (min-width: 576px) {
+    .responsive-btn {
+      font-size: 0.875rem; /* Medium font size */
+    }
+  }
+  @media (min-width: 320px) {
+    .responsive-btn {
+      font-size: 0.475rem; /* Medium font size */
+    }
+  }
+  
+  /* Large screens */
+  @media (min-width: 768px) {
+    .responsive-btn {
+      font-size: 1rem; /* Large font size */
+    }
+  }
+  
+  /* Extra large screens */
+  @media (min-width: 992px) {
+    .responsive-btn {
+      font-size: 1.125rem; /* Extra large font size */
+    }
+  }
+  
+  /* Extra extra large screens */
+  @media (min-width: 1200px) {
+    .responsive-btn {
+      font-size: 1.25rem; /* Extra extra large font size */
+    }
+  }
+  

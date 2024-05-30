@@ -15,7 +15,7 @@ import {
 import Header from "../Header";
 import Footer from "../Footer";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { OtpUser, RegisterUser } from "../apicalls/User";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import Lazyloading from "../BackendComp/Lazy";
@@ -46,6 +46,11 @@ const Signup = () => {
   const [otp, setOtp] = useState();
   const [otpModalOpen, setOtpModalOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState("Student");
+  const location=useLocation();
+
+  const params = new URLSearchParams(location.search);
+  const role = params.get('role');
+  console.log(role)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
@@ -76,7 +81,7 @@ const Signup = () => {
     // const verified=false;
     const otpsent = 0;
     setFormErrors(validate(data));
-    console.log(Object.keys(formErrors).length === 0)
+    console.log(Object.keys(formErrors).length === 0);
     if (Object.keys(formErrors).length === 0) {
       if (!isChecked) {
         setShowModal(true);
@@ -88,23 +93,20 @@ const Signup = () => {
         subject: "verify your email",
       });
       if (response.success === true) {
-        setOtpModalOpen(true)
+        setOtpModalOpen(true);
         setotprelease(response.data);
         // console.log(otprelease);
-        setloading(false)
+        setloading(false);
       }
-      if(response.success===false){
+      if (response.success === false) {
         toast.info(response.message);
-        setotprelease(0)
+        setotprelease(0);
         setOtpModalOpen(false);
         return;
       }
-    }
-    else{
-     // console.log(formErrors)
+    } else {
       setOtpModalOpen(false);
       return;
-
     }
   };
 
@@ -112,23 +114,20 @@ const Signup = () => {
     // Perform OTP verification here, e.g., calling an API
     // Assuming you have an API function for OTP verification
 
-    // console.log(otp);
-    // console.log(otprelease);
     if (otp == otprelease) {
-      console.log("check-99");
       setloading(true);
       const response = await RegisterUser(data);
       setOtp();
-      console.log("check-102");
+
       if (response) {
         setloading(false);
-        console.log("check-105");
+
         if (response.success === false) {
           setIsSubmit(false);
           toast.error(response.message);
 
           setotprelease(0);
-          setOtpModalOpen(false)
+          setOtpModalOpen(false);
         } else if (response.success === true) {
           //console.log(response);
           toast.success(response.message);
@@ -166,15 +165,14 @@ const Signup = () => {
 
   //     };
   // }
-  const handleRoleChange = (role) => {
-    setSelectedRole(role);
-  };
+  // const handleRoleChange = (role) => {
+  //   setSelectedRole(role);
+  // };
 
- 
   const validate = (values) => {
     const errors = {};
     const regex1 = /^[a-zA-Z ]*$/;
-    const regex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
+    const regex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
     if (!values.firstName) {
       errors.firstName = "**firstName is required**";
     } else if (!regex1.test(values.firstName)) {
@@ -217,29 +215,25 @@ const Signup = () => {
     return errors;
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     // console.log(otprelease);
-  },[otprelease])
+  }, [otprelease]);
 
   useEffect(() => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0) {
       return;
-    }
-    else{
-      setOtpModalOpen(false)
+    } else {
+      setOtpModalOpen(false);
     }
   }, [formErrors]);
-
-
-
 
   return (
     <div>
       <Header />
       <div className="new-wrapper">
         <h1 className="Signup1" id="SignIn">
-          Sign in as {selectedRole}
+          Sign in as {role}
         </h1>
         <p className="lets">Lets Start the Journey </p>
         <section
@@ -264,13 +258,10 @@ const Signup = () => {
                                         ) : ( */}
 
                     <Form className="form9180" onSubmit={handleSubmit}>
+                      <Form.Group className="mb-4" controlId="formBasicname">
+                        {/* <center><h6>Select Your Role</h6></center> */}
 
-                    <Form.Group className="mb-4" controlId="formBasicname">
-                      {/* <center><h6>Select Your Role</h6></center> */}
-                      
-                             <RoleBased onRoleChange={handleRoleChange} />
-                      
-                     
+                        {/* <RoleBased onRoleChange={handleRoleChange} /> */}
                       </Form.Group>
 
                       <Form.Group className="mb-4" controlId="formBasicname">
@@ -281,7 +272,7 @@ const Signup = () => {
                           placeholder="Enter your first name"
                           value={data.firstName}
                           onChange={handleChange}
-                          readOnly={otprelease.toString().length>1}
+                          readOnly={otprelease.toString().length > 1}
                         />
                         <p className="pform">{formErrors.firstName}</p>
                       </Form.Group>
@@ -294,7 +285,7 @@ const Signup = () => {
                           placeholder="Enter your last name"
                           value={data.lastName}
                           onChange={handleChange}
-                          readOnly={otprelease.toString().length>1}
+                          readOnly={otprelease.toString().length > 1}
                         />
                         <p className="pform">{formErrors.lastName}</p>
                       </Form.Group>
@@ -307,7 +298,7 @@ const Signup = () => {
                           placeholder="Enter your Email Address"
                           value={data.email}
                           onChange={handleChange}
-                          readOnly={otprelease.toString().length>1}
+                          readOnly={otprelease.toString().length > 1}
                         />
                         <p className="pform">{formErrors.email}</p>
                       </Form.Group>
@@ -320,7 +311,7 @@ const Signup = () => {
                             placeholder="Pick a password"
                             value={data.password}
                             onChange={handleChange}
-                            readOnly={otprelease.toString().length>1}
+                            readOnly={otprelease.toString().length > 1}
                           />
                           <button
                             type="button"
@@ -334,51 +325,48 @@ const Signup = () => {
                         </div>
                         <p className="pform">{formErrors.password}</p>
                       </Form.Group>
-                      {
-                        (selectedRole === "Private Teacher" || selectedRole === "Coaching institute")  &&
+                      {role === "Teacher" 
+                         && (
                         <>
-                         <Form.Group className="mb-4" controlId="formBasicname">
-                        <Form.Control
-                          className=" FormControl3"
-                          type="text"
-                          name="businessName"
-                          placeholder="Enter your business name "
-                          value={data.businessName}
-                          onChange={handleChange}
-                          readOnly={otprelease.toString().length>1}
-                        />
-                        <p className="pform">{formErrors.businessName}</p>
-                      </Form.Group>
+                          <Form.Group
+                            className="mb-4"
+                            controlId="formBasicname"
+                          >
+                            <Form.Control
+                              className=" FormControl3"
+                              type="text"
+                              name="businessName"
+                              placeholder="Enter your business name "
+                              value={data.businessName}
+                              onChange={handleChange}
+                              readOnly={otprelease.toString().length > 1}
+                            />
+                            <p className="pform">{formErrors.businessName}</p>
+                          </Form.Group>
 
-                      <Form.Select
-                        aria-label="Default select example"
-                        className="FormControl3"
-                        onChange={handleChange}
-                        value={data.businessType}
-                        name="businessType" // Add name attribute to ensure handleChange updates the correct field
-                        readOnly={otprelease.toString().length>1}
-                      >
-                        <option disabled value="">
-                          Enter your business type
-                        </option>{" "}
-                        {/* Add disabled and empty value for placeholder */}
-                        <option value="I am a Private Tutor">
-                          I am a Private Tutor
-                        </option>
-                        <option value="I am a Tuition Center">
-                          I am a Tuition Center
-                        </option>{" "}
-                        {/* Removed extra space after "Center" */}
-                      </Form.Select>
-                        
-                        
+                          <Form.Select
+                            aria-label="Default select example"
+                            className="FormControl3"
+                            onChange={handleChange}
+                            value={data.businessType}
+                            name="businessType" // Add name attribute to ensure handleChange updates the correct field
+                            readOnly={otprelease.toString().length > 1}
+                          >
+                            <option disabled value="">
+                              Enter your business type
+                            </option>{" "}
+                            {/* Add disabled and empty value for placeholder */}
+                            <option value="I am a Private Tutor">
+                              I am a Private Tutor
+                            </option>
+                            <option value="I am a Tuition Center">
+                              I am a Tuition Center
+                            </option>{" "}
+                            {/* Removed extra space after "Center" */}
+                          </Form.Select>
                         </>
-                       
+                      )}
 
-
-
-                      }
-                     
                       <p className="pform">{formErrors.businessType}</p>
                       <Row className="my-3">
                         <Col sm={1}>
@@ -440,10 +428,7 @@ const Signup = () => {
                       </Button>
                     </Form>
 
-                  
-                                        {/* ) */}
-
-                                       
+                    {/* ) */}
                   </Card>
                   <br></br> <br></br> <br></br>
                 </div>
@@ -515,12 +500,11 @@ const Signup = () => {
 };
 export default Signup;
 
-
 //email validation to be handled
 
 // const isValidEmail=(email)=>{
 
-//  
+//
 
 //   const a = regex.test(email)
 

@@ -107,7 +107,16 @@ const Student=new mongoose.Schema({
     managedBy:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Educator_info"
-    }
+    },
+    // score:[{
+    //     quizId:{
+    //         type:mongoose.Schema.Types.ObjectId,
+    //         ref:"Quiz"
+    //     },
+    //     marks:{
+    //         type:Number,
+    //     }
+    // }]
     
 
    

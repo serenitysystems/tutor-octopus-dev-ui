@@ -22,7 +22,7 @@ const verifyToken = async (req, res, next) => {
         req.user = decoded;
         next(); 
     } catch (error) {
-        return res.status(403).send({
+        return res.status(210).send({
             success: false,
             message: error.message,
             status:502

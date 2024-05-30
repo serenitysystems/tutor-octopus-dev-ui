@@ -12,8 +12,11 @@ import {
 import { Modal, Form, Button, Stack } from "react-bootstrap";
 import Lazyloading from "../../BackendComp/Lazy";
 import BatchList from "../../BackendComp/BatchList";
+import MobilemenuNavbar from "../SideNavbar/MobilemenuNavbar";
+import TopBar from "../SideNavbar/TopBar";
+import Sidenavbar from "../SideNavbar/Sidenavbar";
 
-const Attendencelist = () => {
+const Attendencelist = (userData) => {
   const [statuses, setStatuses] = useState({});
   const [data, setData] = useState([]);
   const [Recorddata, setRecorddata] = useState([]);
@@ -243,6 +246,16 @@ const Attendencelist = () => {
 
   return (
     <div>
+    <MobilemenuNavbar userData={userData} />
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-3 d-none d-md-block bg-light sidebar">
+      <Sidenavbar />
+    </nav>
+    <main role="main" class="col-md-8 col-lg-9 sidebar5">
+      <TopBar userData={userData} />
+
+      <div className="dashboard-header px-md-4">
       <select
         className="batch89 "
         id="batch"
@@ -291,8 +304,7 @@ const Attendencelist = () => {
           <thead className="head56">
             <tr className="head56">
               <th className="th78">Sl no.</th>
-              <th className="th78">FirstName</th>
-              <th className="th78">LastName</th>
+              <th className="th78">Name</th>
               <th className="th78">Email</th>
               {/* <th className='th78'>Record</th> */}
               <th className="th78">Status</th>
@@ -303,8 +315,7 @@ const Attendencelist = () => {
               {currentStudents.map((student, index) => (
                 <tr key={index + 1}>
                   <td>{index + 1 + (currentPage - 1) * 5}</td>
-                  <td>{student.firstName}</td>
-                  <td>{student.lastName}</td>
+                  <td>{student.firstName+" "+student.lastName}</td>
                   <td>{student.email}</td>
                   {/* <td>
                             I want to add a button here so that whenever user hits this button a Modal
@@ -558,7 +569,13 @@ const Attendencelist = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+      </div>
+    </main>
+
+
+  </div>
+  </div>
+  </div>
   );
 };
 

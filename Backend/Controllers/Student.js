@@ -218,3 +218,36 @@ exports.studentRead=async (req, res) => {
 }
 
 
+
+
+exports.studentOneRead=async (req, res) => {
+    try {
+         const id = req.query.userId; // Get the id from request parameters
+         const student = await Student.findById(id);
+        if (!student) {
+            return res.status(404).json({ message: "Student not found" });
+        }
+       
+
+        
+        res.send({
+            success:true,
+            data: {
+                user: student.email,
+                // token: token,
+                firstName: student.firstName,
+                lastName: student.lastName,
+                role: "Student",
+                userId: student._id,
+                batch:student.batch,
+                programme:student.lessonCategory,
+                navigate:'/Student/Home',
+                // token:token
+            }
+        });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+

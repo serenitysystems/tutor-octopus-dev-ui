@@ -1,3 +1,43 @@
+/* Common styles for both tabs */
+button#controlled-tab-example-tab-home,
+button#controlled-tab-example-tab-batch {
+  border: none;
+  color: rgba(17, 119, 254, 1);
+  font-size: 19px;
+  font-weight: 500;
+  padding: 0px;
+  margin: 0px 10px;
+  border-bottom: 2px solid white; /* Set default border color */
+  background-color: transparent;
+}
+
+/* Styles for active tab */
+button#controlled-tab-example-tab-home[aria-selected="true"],
+button#controlled-tab-example-tab-batch[aria-selected="true"] {
+  border-bottom-color: rgba(17, 119, 254, 1); /* Set border color to blue when active */
+}
+
+/* Styles for when the tab is hovered */
+button#controlled-tab-example-tab-home:hover,
+button#controlled-tab-example-tab-batch:hover {
+  border-bottom-color: rgba(17, 119, 254, 1); /* Set border color to blue when hovered */
+  color: rgb(157, 184, 219);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .addnewcard89 {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   margin: 30px 0px 0px 0px;
@@ -79,10 +119,6 @@
 }
 
 .quiz-card {
-  min-width: 300px;
-  min-height: 200px;
-  max-width: 300px;
-  max-height: 200px;
   background-color: #1177fe;
   color: white;
 }

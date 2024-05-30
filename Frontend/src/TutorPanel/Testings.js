@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Testings() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -14,19 +14,19 @@ function Testings() {
     if (selectedImage) {
       // Perform upload logic here, e.g., using FormData and fetch API
       const formData = new FormData();
-      formData.append('image', selectedImage);
-      
+      formData.append("image", selectedImage);
+
       // Example: Upload image using fetch API
-      fetch('YOUR_UPLOAD_ENDPOINT', {
-        method: 'POST',
-        body: formData
+      fetch("YOUR_UPLOAD_ENDPOINT", {
+        method: "POST",
+        body: formData,
       })
-      .then(response => {
-        // Handle response
-      })
-      .catch(error => {
-        // Handle error
-      });
+        .then((response) => {
+          // Handle response
+        })
+        .catch((error) => {
+          // Handle error
+        });
     }
   };
 
@@ -38,7 +38,11 @@ function Testings() {
       {selectedImage && (
         <div>
           <h3>Selected Image:</h3>
-          <img src={URL.createObjectURL(selectedImage)} alt="Selected" style={{ maxWidth: '100%' }} />
+          <img
+            src={URL.createObjectURL(selectedImage)}
+            alt="Selected"
+            style={{ maxWidth: "100%" }}
+          />
         </div>
       )}
     </div>

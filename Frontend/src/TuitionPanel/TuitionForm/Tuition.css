@@ -1,0 +1,125 @@
+
+
+.Loginformj {
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 00vh; */
+    padding: 0px 0px 80px 0px;
+}
+
+
+.Loginformj1 {
+    width: 450px;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 30px 30px 50px 30px;
+    border-radius: 12px;
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/* .Loginformj1 input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+} */
+
+.Loginformj1 input:focus {
+    outline: none;
+    border-color: rgb(220, 220, 220);
+    transition: .3s;
+}
+
+
+
+
+.Signup24 {
+    font-size: 25px;
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0px 0px 0px;
+}
+
+.lets4 {
+    font-size: 18px;
+    text-align: center;
+    margin: 0px 0px 40px 0px;
+}
+  
+.eyese {
+    display: flex;
+    border: 1px solid #dee2e6;
+    border-radius: 5px !important;
+}
+
+.meyese{
+    border: none;
+    
+}
+
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    
+  }
+.bbwar{
+    margin-bottom: -90px;
+
+}
+
+.VOIR_LESPRODUITSbn991 {
+    background-color: #052A44;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 50px 8px 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.VOIR_LESPRODUITSbn991:hover {
+    background-color: #FF9F0A;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 50px 8px 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+  @media (max-width: 480px) {
+    .Loginformj1 {
+       margin: 10px !important;
+    }
+    
+.Loginformj {
+    padding: 0px 0px 0px 0px !important;
+}
+.VOIR_LESPRODUITSbn991 {
+   
+    padding: 8px 20px 8px 20px !important;
+  
+}
+
+.VOIR_LESPRODUITSbn991:hover {
+    padding: 8px 20px 8px 20px !important;
+}
+}
+@media (max-width: 768px){
+    .Loginformj1 {
+        margin: 10px !important;
+    }
+}
