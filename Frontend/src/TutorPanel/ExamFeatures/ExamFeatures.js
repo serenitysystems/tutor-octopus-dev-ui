@@ -53,7 +53,7 @@ const ExamFeatures = ({ userData }) => {
                 activeKey={activeTab}
                 onSelect={(k) => setActiveTab(k)}
               >
-                <Tab eventKey="Practice" title="Practice">
+                <Tab eventKey="practice" title="Practice">
                   <div>
                     <Card className="addnewcard">
                       <div className="p-4 mb-1">
@@ -83,7 +83,7 @@ const ExamFeatures = ({ userData }) => {
                     </Card>
                   </div>
                 </Tab>
-                <Tab eventKey="Mock" title="Mock">
+                <Tab eventKey="mock" title="Mock">
                   <div>
                     <Card className="addnewcard">
                       <div className="p-4 mb-1">
@@ -112,7 +112,7 @@ const ExamFeatures = ({ userData }) => {
                     </Card>
                   </div>
                 </Tab>
-                <Tab eventKey="Exam" title="Exam">
+                <Tab eventKey="exam" title="Exam">
                   <div>
                     <Card className="addnewcard">
                       <div className="p-4 mb-1">

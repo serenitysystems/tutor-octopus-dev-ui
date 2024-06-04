@@ -73,7 +73,7 @@ const ExamCard = ({ data,quizType }) => {
         dispatch(setActiveQuiz(data));
 
         navigate(`/student/student-exam/${data._id}`, {
-          state: { questionLength: questionLength },
+          state: { questionLength: questionLength,quizType:quizType },
         });
         console.log("done");
       } else {

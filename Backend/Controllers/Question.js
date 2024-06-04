@@ -2,6 +2,7 @@
 const { Quiz } = require("../Models/Quiz");
 const { Student } = require("../Models/Student");
 const { options } = require("../Router/userRouter");
+const stringSimilarity = require('string-similarity');
 
 exports.questionAdd = async (req, res) => {
   // const user = await Educator_info.findOne({ email: req.body.email })
@@ -282,7 +283,7 @@ exports.getAllQuiz = async (req, res) => {
 //When student hit submit button to submit answers, this api is called
 exports.submitQuiz = async (req, res) => {
   try {
-    const { quizId, studentId, answers,quizType } = req.body; // Extract quiz ID, student ID, and answers from request body
+    const { quizId, studentId, answers,questionTime } = req.body; // Extract quiz ID, student ID, and answers from request body
 
     // Retrieve the quiz document
     const quiz = await Quiz.findById(quizId);
@@ -292,33 +293,211 @@ exports.submitQuiz = async (req, res) => {
 
     // Initialize score counter
     //NEED TO ADD A CONDITION HERE REGARDING QUIZ-TYPE
+
     let score = 0,totalMarks=0;
 
     // Compare submitted answers with correct options
     //console.log(quiz);
-    answers.forEach((answer, index) => {
-      const correctOption = quiz.questions[index].correctOption;
-      const type=quiz.questions[index].questionType;
-      if(type==='T/F'){
-        if(answer[0]===correctOption[0]){
-          score+=quiz.questions[index].marks
-        }
-      }
-      else {
-        let count=0;
-        for(let i=0;i<answer.length;i++){
-          if(answer[i]!==correctOption[i]){
-            count=1;
+    if(quiz.quizType==='Quiz'){
+      answers.forEach((answer, index) => {
+        const correctOption = quiz.questions[index].correctOption;
+        const type=quiz.questions[index].questionType;
+        if(type==='T/F'){
+          if(answer[0]===correctOption[0]){
+            score+=quiz.questions[index].marks
           }
         }
-        if(count===0){
-          score+=quiz.questions[index].marks
+        else {
+          let count=0;
+          for(let i=0;i<answer.length;i++){
+            if(answer[i]!==correctOption[i]){
+              count=1;
+            }
+          }
+          if(count===0){
+            score+=quiz.questions[index].marks
+          }
         }
-      }
-     
-      totalMarks+=quiz.questions[index].marks;
-    });
+       
+        totalMarks+=quiz.questions[index].marks;
+      });
+    }
 
+
+
+
+    else if(quiz.quizType!='Quiz'){
+      console.log(answers,"...............payload");
+      const data = {
+        statusData: {
+          status: "",
+          percentage: 0,
+          min: "think",
+        },
+        score: { value: 0, totalMarks: 0 },
+        accuracy: 0,
+        speed: { value: 0, unit: "Que/Hour" },
+        totalQuestions: { count: 0, answered:0, skipped:0, unanswered:0 },
+        time:{},
+         //totalTime: {
+        //   minutes: 30,
+        //   spent: "1 Min 06 Sec",
+        //   correct: "16 Sec",
+        //   wrong: "1 Min 19 Sec",
+        //   other: "1 Min 25 Sec",
+        // },
+        scoredMarks: { earned: 0, negative: 0, total: 0 },
+        answerReview:[]
+      };
+      let totalSeconds = 0;
+      for (let key in questionTime) {
+    const { minutes, seconds } = questionTime[key];
+    totalSeconds += minutes * 60 + seconds;
+      }
+     data.speed.value=Math.round(totalSeconds/Object.keys(questionTime).length)
+     data.speed.unit='sec/question'
+
+     
+      
+      answers.forEach((answer, index) => {
+        //if answer, then go ahead  , else unanswered++;
+        
+        let eachanswerReview={question:"",correctAnswer:[],yourAnswer:[],status:"",css:"",time:`${0}min ${0}sec`}
+        //console.log(answer);
+         const correctOption = quiz.questions[answer.questionIndex].correctOption;
+         eachanswerReview.question=quiz.questions[answer.questionIndex].question.text
+         eachanswerReview.correctAnswer=quiz.questions[answer.questionIndex].correctOption
+         eachanswerReview.yourAnswer=answer.answer
+         eachanswerReview.time= `${questionTime[index]?.minutes !== undefined ? questionTime[index].minutes : 0}min ${questionTime[index]?.seconds !== undefined ? questionTime[index].seconds : 0}sec`
+
+         const type=quiz.questions[answer.questionIndex].questionType;
+
+         if(type==='T/F' || type==='Fill' ){
+           if(answer.answer[0]===correctOption[0]){
+            data.score.value+=quiz.questions[index].marks
+            data.totalQuestions.answered++;
+            eachanswerReview.status="answered"
+            eachanswerReview.css="table-success"
+             
+           }
+           else{
+             data.totalQuestions.unanswered++;
+             eachanswerReview.status="unanswered"
+             eachanswerReview.css="table-danger"
+           }
+         }
+         else if(type==='objective' || type==='Arrange the following'){
+          let count=0;
+           for(let i=0;i<answer.answer.length;i++){
+            if(answer.answer[i]!==correctOption[i]){
+              count=1;
+             }
+           }
+           if(count===0){
+             data.score.value+=quiz.questions[index].marks
+             data.totalQuestions.answered++;
+             eachanswerReview.status="answered"
+             eachanswerReview.css="table-success"
+           }
+           else{
+            data.totalQuestions.unanswered++;
+            eachanswerReview.status="unanswered"
+            eachanswerReview.css="table-danger"
+           }
+         }
+         
+          //Ram is a good boy. ------------->No other boy is as good as ram
+          else if (type === 'Short') {
+            const similarity = stringSimilarity.compareTwoStrings(answer.answer.join(' '), correctOption.join(' '));
+            //const threshold = {partialCorrect:0.5,fullCorrect:0.8,lessThanpartial}; // You can adjust this threshold based on your requirement
+              
+              data.score.value +=Math.round( quiz.questions[index].marks*similarity);
+              data.totalQuestions.answered++;
+              eachanswerReview.status = similarity>0.8?"answered":"partially-correct";
+              eachanswerReview.css =  similarity>0.8?"table-success":"table-info";
+            //  else {
+            //   data.totalQuestions.unanswered++;
+            //   eachanswerReview.status = "unanswered";
+            //   eachanswerReview.css = "table-danger";
+            // }
+          }
+
+           
+         data.score.totalMarks+=quiz.questions[answer.questionIndex].marks;
+         data.answerReview.push(eachanswerReview)
+        
+      });
+       data.totalQuestions.skipped=quiz.questions.length-answers.length;
+       //finding the record for skipped answers
+       //[0,1,2]--->[3,4,5]
+       let answeredIndexes = answers.map(answer => answer.questionIndex);
+       console.log(answeredIndexes)
+       let skippedRecords = quiz.questions.filter((question, index) => !answeredIndexes.includes(index));
+       skippedRecords.map((record,index)=>{
+        let eachanswerReview={
+          question:record.question.text,
+          correctAnswer:record.correctOption,
+          yourAnswer:"skipped",
+          status:"skipped",
+          css:"table-warning",
+          time: `${questionTime[index]?.minutes !== undefined ? questionTime[index].minutes : 0}min ${questionTime[index]?.seconds !== undefined ? questionTime[index].seconds : 0}sec`
+
+        }
+          data.answerReview.push(eachanswerReview)
+          data.score.totalMarks+=record.marks
+          data.time[index]=questionTime[index]?questionTime[index]:0
+
+    })
+
+       // console.log(skippedRecords)
+
+
+       data.totalQuestions.count=quiz.questions.length
+       data.accuracy=(data.totalQuestions.answered/(data.totalQuestions.answered+data.totalQuestions.unanswered))*100
+      // // data.speed.value=answers.length/totalTime in secs
+      console.log(data.score.value,".............",data.score.totalMarks)
+       data.statusData.percentage=(data.score.value/data.score.totalMarks)*100
+       data.statusData.status=data.statusData.percentage>40?"Pass":"Fail"
+       data.statusData.min=40
+      return res.status(200).send({
+        data:data,
+        success:true,
+        message:"Recieved result successfully"
+      })
+//    for(let i=0;i<allanswers.length;i++){
+//     let answerGiven=answers.find((answer)=>answer.questionIndex===i)
+//     if(answerGiven){
+//        if(answerGiven.type==='T/F'){
+//           if (answerGiven.correctOption[0] === allanswers[0]) 
+//             {
+//                 data.score.value += quiz.questions[index].marks;
+//                 data.totalQuestions.answered++;
+//             } 
+//           else 
+//            {
+//                   data.totalQuestions.unanswered++;
+//            }
+//     }
+//     else if(answerGiven.type==='objective'){
+//       if (answerGiven.correctOption[0] === allanswers[0]) 
+//         {
+//             data.score.value += quiz.questions[i].marks;
+//             data.totalQuestions.answered++;
+//         } 
+//       else 
+//        {
+//               data.totalQuestions.unanswered++;
+//        }
+// }
+
+//     }
+//     else{
+//       data.totalQuestions.skipped++;
+//     }
+
+
+//   }	
+    }
     let percentage=(score/totalMarks)*100
 
     // Save student's score and quiz ID
@@ -326,26 +505,31 @@ exports.submitQuiz = async (req, res) => {
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
-    const resultData={
-      name:student.firstName+" "+student.lastName,
-      score:score,
-      status:percentage>quiz.passingCriteria?"pass":"fail",
-      reminder:false,
-      id:student._id,
-      email:student.email,
-      batch:student.batch,
-      totalMarks:totalMarks,
-      percentage:(score/totalMarks)*100,
-    }
-    // Update student's score and quiz ID
-    quiz.result.push(resultData);
-    quiz.submittedPeople.push(student.email)
-    await quiz.save();
+   
+    
+      const resultData={
+        name:student.firstName+" "+student.lastName,
+        score:score,
+        status:percentage>quiz.passingCriteria?"pass":"fail",
+        reminder:false,
+        id:student._id,
+        email:student.email,
+        batch:student.batch,
+        totalMarks:totalMarks,
+        percentage:(score/totalMarks)*100,
+      }
+      // Update student's score and quiz ID
+      quiz.result.push(resultData);
+      quiz.submittedPeople.push(student.email)
+      await quiz.save();
+  
+      res
+        .status(200)
+        .json({ message: "Answers submitted successfully", data: score,dataNew:{score:resultData.score,
+          totalMarks:resultData.totalMarks,percentage:resultData.percentage} });
 
-    res
-      .status(200)
-      .json({ message: "Answers submitted successfully", data: score,dataNew:{score:resultData.score,
-        totalMarks:resultData.totalMarks,percentage:resultData.percentage} });
+    
+   
   } catch (error) {
     res.status(500).json({
       error: error.message,

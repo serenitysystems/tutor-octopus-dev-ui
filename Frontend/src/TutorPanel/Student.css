@@ -2,6 +2,9 @@
 button#controlled-tab-example-tab-home,
 button#controlled-tab-example-tab-batch,
 button#controlled-tab-example-tab-match,
+button#controlled-tab-example-tab-practice,
+button#controlled-tab-example-tab-mock,
+button#controlled-tab-example-tab-exam,
 button#controlled-tab-example-tab-result {
   border: none;
   color: rgba(17, 119, 254, 1);
@@ -17,6 +20,9 @@ button#controlled-tab-example-tab-result {
 button#controlled-tab-example-tab-home[aria-selected="true"],
 button#controlled-tab-example-tab-batch[aria-selected="true"],
 button#controlled-tab-example-tab-match[aria-selected="true"],
+button#controlled-tab-example-tab-practice[aria-selected="true"],
+button#controlled-tab-example-tab-mock[aria-selected="true"],
+button#controlled-tab-example-tab-exam[aria-selected="true"],
 button#controlled-tab-example-tab-result[aria-selected="true"] {
   border-bottom-color: rgba(17, 119, 254, 1); /* Set border color to blue when active */
 }
@@ -25,7 +31,10 @@ button#controlled-tab-example-tab-result[aria-selected="true"] {
 button#controlled-tab-example-tab-home:hover,
 button#controlled-tab-example-tab-batch:hover
 button#controlled-tab-example-tab-match:hover
-button#controlled-tab-example-tab-result:hover {
+button#controlled-tab-example-tab-result:hover
+button#controlled-tab-example-tab-practice:hover,
+button#controlled-tab-example-tab-mock:hover,
+button#controlled-tab-example-tab-exam:hover {
   border-bottom-color: rgba(17, 119, 254, 1); /* Set border color to blue when hovered */
   color: rgb(157, 184, 219);
 }

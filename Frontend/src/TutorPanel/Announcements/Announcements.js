@@ -11,6 +11,7 @@ import TopBar from '../SideNavbar/TopBar'
 import { AnnouncementUser, getAnnouncementUser } from '../../apicalls/User'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import CommonAllTable from '../../Components/Common/commonAllTable'
 
 const Announcements = ({ userData }) => {
     const [key, setKey] = useState('home');
@@ -242,7 +243,7 @@ const Announcements = ({ userData }) => {
                     </Button>
                   ) : (
                     <div>
-                      <table className="table table-striped">
+                      {/* <table className="table table-striped">
                         <thead className="head56">
                           <tr className="head56">
                             <th scope="col" className="th78">
@@ -269,7 +270,9 @@ const Announcements = ({ userData }) => {
                             </tr>
                           ))}
                         </tbody>
-                      </table>
+                      </table> */}
+                      <CommonAllTable head={['subject','description','batch']}
+                      data={AnnouncementData}/>
                       <div className="paginationj">
                         {/* <Pagination >
                                             {Array.from({ length: Math.ceil(AnnouncementData.subject.length / itemsPerPage) }).map((_, index) => (

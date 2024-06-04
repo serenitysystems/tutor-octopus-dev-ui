@@ -60,6 +60,12 @@ import QuizRecord from "./TutorPanel/Quiz/QuizRecord";
 import ExamPractice from "./TutorPanel/ExamFeatures/ExamPractice";
 import Exam from "./StudentPanel/Exam/Exam";
 import Examplay from "./StudentPanel/Exam/Examplay";
+import AdminHome from "./SuperAdmin/AdminHome/AdminHome";
+import AdminStudent from "./SuperAdmin/AdminStudent/AdminStudent";
+import AllExpenses from "./SuperAdmin/AdminStudent/AllExpenses";
+import Settings from "./SuperAdmin/Superadmin/Settings";
+import Files from "./SuperAdmin/Files/Files";
+import Tutors from "./SuperAdmin/AdminStudent/Tutors";
 
 // Define components for each route
 
@@ -146,7 +152,7 @@ function App() {
                 element={<Quiz userData={userData} />}
               />
             )}
-             {userData && (
+            {userData && (
               <Route
                 path="/QuizRecord"
                 element={<QuizRecord userData={userData} />}
@@ -156,20 +162,15 @@ function App() {
             {userData && (
               <Route
                 path="/ExamFeatures/new/:id"
-                 element={<ExamPractice userData={userData} />}
+                element={<ExamPractice userData={userData} />}
               />
             )}
-             {userData && (
+            {userData && (
               <Route
                 path="/ExamFeatures/:id"
-                 element={<ExamPractice userData={userData} />}
+                element={<ExamPractice userData={userData} />}
               />
             )}
-
-
-
-
-
 
             {userData && (
               <Route path="/Home" element={<Home userData={userData} />} />
@@ -258,29 +259,73 @@ function App() {
               }
             />
 
-            <Route path="/student/today-sessions" element={ <Layout><TodaySession /></Layout>} />
+            <Route
+              path="/student/today-sessions"
+              element={
+                <Layout>
+                  <TodaySession />
+                </Layout>
+              }
+            />
             <Route
               path="/student/fee-transactions"
-              element={ <Layout><FeeTransactions /></Layout>}
+              element={
+                <Layout>
+                  <FeeTransactions />
+                </Layout>
+              }
             />
-            <Route path="/student/timetable" element={<Layout><TimeTable /></Layout>} />
+            <Route
+              path="/student/timetable"
+              element={
+                <Layout>
+                  <TimeTable />
+                </Layout>
+              }
+            />
             {/* <Route
               path="/student/student-attendance"
               element={<Attendance />}
             /> */}
             <Route
               path="/student/student-exam"
-              element={<Layout><Exam/></Layout>}
+              element={
+                <Layout>
+                  <Exam />
+                </Layout>
+              }
             />
-             <Route
+            <Route
               path="/student/student-exam/:id"
-              element={<Layout><Examplay/></Layout>}
+              element={
+                <Layout>
+                  <Examplay />
+                </Layout>
+              }
             />
-            <Route path="/student/student-quiz" element={<Layout><StudentQuiz /></Layout>} />
-            <Route path="/student/student-quizcard" element={<Layout><QuizCard /></Layout>} />
+            <Route
+              path="/student/student-quiz"
+              element={
+                <Layout>
+                  <StudentQuiz />
+                </Layout>
+              }
+            />
+            <Route
+              path="/student/student-quizcard"
+              element={
+                <Layout>
+                  <QuizCard />
+                </Layout>
+              }
+            />
             <Route
               path="/student/:id"
-              element={<Layout><QuizPlay userData={userData} /></Layout>}
+              element={
+                <Layout>
+                  <QuizPlay userData={userData} />
+                </Layout>
+              }
             />
             <Route
               path="/student/student-announcement"
@@ -290,6 +335,21 @@ function App() {
               path="/student/subscription"
               element={<Event_Calendar_Student />}
             />
+
+
+
+
+
+
+            {/* This is super-admin part */}
+            <Route path="/AdminHome" element={<AdminHome />} />
+
+            <Route path="/AdminStudent" element={<AdminStudent />} />
+            <Route path="/AdminStudent" element={<AdminStudent />} />
+            <Route path="/AllExpenses" element={<AllExpenses />} />
+            <Route path="/Settings" element={<Settings />} />
+            <Route path="/Files" element={<Files />} />
+            <Route path="/Tutors" element={<Tutors />} />
           </Routes>
         </BrowserRouter>
         <ToastContainer />

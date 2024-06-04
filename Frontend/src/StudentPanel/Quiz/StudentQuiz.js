@@ -15,7 +15,7 @@ const StudentQuiz = () => {
 
   const dispatch=useDispatch();
   const fetchData = async () => {
-    const Quizes = await ReadQuiz({userId:sessionStorage.getItem("userId"),role:"Student"});
+    const Quizes = await ReadQuiz({userId:sessionStorage.getItem("userId"),role:"Student",quizType:"Quiz"});
     dispatch(setQuizes(Quizes));
   };
 
